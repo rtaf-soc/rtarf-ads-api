@@ -12,7 +12,7 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY ads-api/* ./ads-api/
-COPY please-scan-bn.sln .
+COPY ads-api.sln .
 
 RUN dotnet restore ads-api/ads-api.csproj
 RUN dotnet publish ads-api/ads-api.csproj -c release -o /app --no-restore -p:PackageVersion=${version}
