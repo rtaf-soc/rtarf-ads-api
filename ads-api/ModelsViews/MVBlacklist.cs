@@ -4,10 +4,10 @@ using Its.Ads.Api.Models;
 namespace Its.Ads.Api.ModelsViews
 {
     [ExcludeFromCodeCoverage]
-    public class MVArtifact
+    public class MVBlacklist
     {
         public string? Status { get; set; }
         public string? Description { get; set; }
-        public MArtifact? Artifact { get; set; }
+        public MBlacklist? Blacklist { get; set; }
     }
 }
