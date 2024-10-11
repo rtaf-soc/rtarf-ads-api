@@ -42,12 +42,14 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IWorkflowService, WorkflowService>();
+            builder.Services.AddScoped<IArtifactService, ArtifactService>();
 
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<IApiKeyRepository, ApiKeyRepository>();
             builder.Services.AddScoped<IRoleRepository, RoleRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IWorkflowRepository, WorkflowRepository>();
+            builder.Services.AddScoped<IArtifactRepository, ArtifactRepository>();
 
             builder.Services.AddTransient<IAuthorizationHandler, GenericRbacHandler>();
             builder.Services.AddScoped<IBasicAuthenticationRepo, BasicAuthenticationRepo>();
