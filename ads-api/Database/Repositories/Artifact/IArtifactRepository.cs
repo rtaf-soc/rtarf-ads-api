@@ -10,6 +10,7 @@ namespace Its.Ads.Api.Database.Repositories
         public int GetArtifactCount(VMArtifact param);
         public IEnumerable<MArtifact> GetArtifacts(VMArtifact param);
         public MArtifact GetArtifactById(string artifactId);
+        public MArtifact GetArtifactByCode(string artifactCode);
         public MArtifact? DeleteArtifactById(string artifactId);
         public bool IsArtifactCodeExist(string artifactCode);
     }

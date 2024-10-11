@@ -86,6 +86,12 @@ namespace Its.Ads.Api.Database.Repositories
             return u!;
         }
 
+        public MArtifact GetArtifactByCode(string artifactCode)
+        {
+            var u = context!.Artifacts!.Where(p => p!.ArtifactCode!.Equals(artifactCode) && p!.OrgId!.Equals(orgId)).FirstOrDefault();
+            return u!;
+        }
+
         public bool IsArtifactCodeExist(string artifactCode)
         {
             var cnt = context!.Artifacts!.Where(p => p!.ArtifactCode!.Equals(artifactCode) && p!.OrgId!.Equals(orgId)).Count();

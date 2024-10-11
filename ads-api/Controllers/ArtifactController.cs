@@ -48,6 +48,15 @@ namespace Its.Ads.Api.Controllers
             return result;
         }
 
+        [ExcludeFromCodeCoverage]
+        [HttpDelete]
+        [Route("org/{id}/action/CheckBlackListByCode/{artifactCode}")]
+        public MArtifact CheckBlackListByCode(string id, string artifactCode)
+        {
+            var result = svc.GetArtifactByCode(id, artifactCode);
+            return result;
+        }
+
         [HttpGet]
         [Route("org/{id}/action/GetArtifacts")]
         public IActionResult GetArtifacts(string id, [FromQuery] VMArtifact param)

@@ -11,5 +11,6 @@ namespace Its.Ads.Api.Services
         public MVArtifact? DeleteArtifactById(string orgId, string artifactId);
         public IEnumerable<MArtifact> GetArtifacts(string orgId, VMArtifact param);
         public int GetArtifactCount(string orgId, VMArtifact param);
+        public MArtifact GetArtifactByCode(string orgId, string artifactCode);
     }
 }

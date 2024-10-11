@@ -23,6 +23,14 @@ namespace Its.Ads.Api.Services
             return result;
         }
 
+        public MArtifact GetArtifactByCode(string orgId, string artifactCode)
+        {
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.GetArtifactByCode(artifactCode);
+
+            return result;
+        }
+
         public MVArtifact? AddArtifact(string orgId, MArtifact artifact)
         {
             repository!.SetCustomOrgId(orgId);
