@@ -94,9 +94,11 @@ namespace Its.Ads.Api.Database.Repositories
             return u!;
         }
 
-        public bool IsBlacklistCodeExist(string artifactCode)
+        public bool IsBlacklistCodeExist(string artifactCode, int? blackListType)
         {
-            var cnt = context!.Blacklists!.Where(p => p!.BlacklistCode!.Equals(artifactCode) && p!.OrgId!.Equals(orgId)).Count();
+            var cnt = context!.Blacklists!.Where(p => p!.BlacklistCode!.Equals(artifactCode)
+                && p!.BlacklistType!.Equals(blackListType)
+                && p!.OrgId!.Equals(orgId)).Count();
             return cnt >= 1;
         }
 

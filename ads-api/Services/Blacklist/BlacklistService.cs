@@ -37,7 +37,7 @@ namespace Its.Ads.Api.Services
 
             var r = new MVBlacklist();
 
-            var isExist = repository!.IsBlacklistCodeExist(artifact.BlacklistCode!);
+            var isExist = repository!.IsBlacklistCodeExist(artifact.BlacklistCode!, artifact.BlacklistType!);
 
             if (isExist)
             {

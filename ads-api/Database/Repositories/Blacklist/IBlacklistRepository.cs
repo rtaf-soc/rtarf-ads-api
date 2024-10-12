@@ -12,6 +12,6 @@ namespace Its.Ads.Api.Database.Repositories
         public MBlacklist GetBlacklistById(string blacklistId);
         public MBlacklist GetBlacklistByCode(string blacklistCode);
         public MBlacklist? DeleteBlacklistById(string blacklistId);
-        public bool IsBlacklistCodeExist(string blacklistCode);
+        public bool IsBlacklistCodeExist(string blacklistCode, int? blacklistType);
     }
 }
