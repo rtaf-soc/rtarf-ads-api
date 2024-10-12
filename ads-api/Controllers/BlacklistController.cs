@@ -57,7 +57,7 @@ namespace Its.Ads.Api.Controllers
             return result;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("org/{id}/action/GetBlacklists")]
         public IActionResult GetBlacklists(string id, [FromQuery] VMBlacklist param)
         {
