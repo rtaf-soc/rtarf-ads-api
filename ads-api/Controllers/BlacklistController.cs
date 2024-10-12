@@ -70,7 +70,7 @@ namespace Its.Ads.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("org/{id}/action/GetBlacklistCount")]
         public IActionResult GetBlacklistCount(string id, [FromQuery] VMBlacklist param)
         {

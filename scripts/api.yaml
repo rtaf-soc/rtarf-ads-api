@@ -1,0 +1,24 @@
+endpoint:
+  dev:
+    uri: https://api-dev.please-scan.com
+    basicAuthenUserEnvVar: DEV_BASIC_AUTHEN_USER
+    basicAuthenPasswordEnvVar: DEV_BASIC_AUTHEN_PASSWORD
+
+api:
+  GetBlacklists:
+    method: POST
+    controller: Blacklist
+    body: BlacklistQuery1
+    path: /
+  
+  GetBlacklistCount:
+    method: GET
+    controller: Blacklist
+    body: BlacklistQuery1
+    path: /
+
+data:
+  BlacklistQuery1:
+    BlacklistType: ""
+    BlacklistCode: ""
+    FullTextSearch: ""
