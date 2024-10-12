@@ -46,8 +46,8 @@ def invoke_api(orgId, apiName, apiObj, endpointObj, dataObj)
   https = Net::HTTP.new(uriObj.host, uriObj.port)
   https.use_ssl = true
   https.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  https.read_timeout = 0.5
-  https.open_timeout = 0.5
+  https.read_timeout = 1
+  https.open_timeout = 1
   https.max_retries = 0
 
   jsonStr = ''
@@ -56,12 +56,14 @@ def invoke_api(orgId, apiName, apiObj, endpointObj, dataObj)
   if (method == 'POST')
     request = Net::HTTP::Post.new(uriObj.path)
     jsonStr = '{}'
+  elsif (method == 'DELETE')
+      request = Net::HTTP::Delete.new(uriObj.path)
   end
 
   if (!bodyObj.nil?)
     # Convert to JSON
     jsonStr = bodyObj.to_json
-    #puts(jsonStr)
+  puts(jsonStr)
   end
 
   request['Accept'] = 'application/json'
@@ -81,11 +83,11 @@ def invoke_api(orgId, apiName, apiObj, endpointObj, dataObj)
   end
 
   puts("INFO : Returned with status code [#{status}]\n")
-  if (status == "200")
+  #if (status == "200")
     puts("INFO : ===== Begin response data =====\n")
     puts("#{responseStr}\n")
     puts("INFO : ===== End response data =====\n")
-  end
+  #end
 end
 
 ##### Main #####

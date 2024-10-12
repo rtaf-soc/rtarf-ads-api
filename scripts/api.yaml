@@ -12,13 +12,29 @@ api:
     path: /
   
   GetBlacklistCount:
-    method: GET
+    method: POST
     controller: Blacklist
     body: BlacklistQuery1
     path: /
+
+  AddBlacklist:
+    method: POST
+    controller: Blacklist
+    body: BlacklistSrcIP1
+    path: /
+
+  DeleteBlacklistById:
+    method: DELETE
+    controller: Blacklist
+    path: /144491b9-3594-4a78-bb43-076a2703b526
 
 data:
   BlacklistQuery1:
     BlacklistType: ""
     BlacklistCode: ""
-    FullTextSearch: ""
+    FullTextSearch: "aaa"
+
+  BlacklistSrcIP1:
+    BlacklistCode: "89.248.165.67"
+    Tags: "Custom"
+    BlacklistType: 1
