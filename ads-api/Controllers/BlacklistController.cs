@@ -59,7 +59,7 @@ namespace Its.Ads.Api.Controllers
 
         [HttpPost]
         [Route("org/{id}/action/GetBlacklists")]
-        public IActionResult GetBlacklists(string id, [FromQuery] VMBlacklist param)
+        public IActionResult GetBlacklists(string id, [FromBody] VMBlacklist param)
         {
             if (param.Limit <= 0)
             {
@@ -72,7 +72,7 @@ namespace Its.Ads.Api.Controllers
 
         [HttpPost]
         [Route("org/{id}/action/GetBlacklistCount")]
-        public IActionResult GetBlacklistCount(string id, [FromQuery] VMBlacklist param)
+        public IActionResult GetBlacklistCount(string id, [FromBody] VMBlacklist param)
         {
             if (param.Limit <= 0)
             {

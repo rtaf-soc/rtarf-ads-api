@@ -3,6 +3,10 @@ endpoint:
     uri: https://api-dev.please-scan.com
     basicAuthenUserEnvVar: DEV_BASIC_AUTHEN_USER
     basicAuthenPasswordEnvVar: DEV_BASIC_AUTHEN_PASSWORD
+  local:
+    uri: http://localhost:5102
+    basicAuthenUserEnvVar: LOCAL_BASIC_AUTHEN_USER
+    basicAuthenPasswordEnvVar: LOCAL_BASIC_AUTHEN_PASSWORD
 
 api:
   GetBlacklists:
@@ -33,7 +37,7 @@ api:
     controller: Blacklist
     path: /85b7d516-c0b3-4b81-a6f7-cace32957aed
 
-  GetBlackListByCode:
+  GetBlacklistByCode:
     method: GET
     controller: Blacklist
     path: /89.248.165.124
@@ -41,7 +45,7 @@ api:
 
 data:
   BlacklistQuery1:
-    BlacklistType: ""
+    BlacklistType: null
     BlacklistCode: ""
     FullTextSearch: "aaa"
 
