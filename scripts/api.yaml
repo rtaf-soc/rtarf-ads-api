@@ -27,6 +27,11 @@ api:
     method: DELETE
     controller: Blacklist
     path: /144491b9-3594-4a78-bb43-076a2703b526
+  
+  GetBlacklistById:
+    method: GET
+    controller: Blacklist
+    path: /144491b9-3594-4a78-bb43-076a2703b526
 
 data:
   BlacklistQuery1:
