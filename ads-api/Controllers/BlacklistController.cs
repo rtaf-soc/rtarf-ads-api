@@ -40,7 +40,7 @@ namespace Its.Ads.Api.Controllers
         }
 
         [ExcludeFromCodeCoverage]
-        [HttpDelete]
+        [HttpGet]
         [Route("org/{id}/action/GetBlacklistById/{artifactId}")]
         public MBlacklist GetBlacklistById(string id, string artifactId)
         {
@@ -49,7 +49,7 @@ namespace Its.Ads.Api.Controllers
         }
 
         [ExcludeFromCodeCoverage]
-        [HttpDelete]
+        [HttpGet]
         [Route("org/{id}/action/CheckBlackListByCode/{artifactCode}")]
         public MBlacklist CheckBlackListByCode(string id, string artifactCode)
         {
