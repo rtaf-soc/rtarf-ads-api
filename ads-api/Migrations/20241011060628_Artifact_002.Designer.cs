@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241011060628_Artifact_002")]
+    partial class Artifact_002
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,20 +66,20 @@ namespace ads_api.Migrations
                     b.ToTable("ApiKeys");
                 });
 
-            modelBuilder.Entity("Its.Ads.Api.Models.MBlacklist", b =>
+            modelBuilder.Entity("Its.Ads.Api.Models.MArtifact", b =>
                 {
-                    b.Property<Guid?>("BlacklistId")
+                    b.Property<Guid?>("ArtifactId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("blacklist_id");
+                        .HasColumnName("artifact_id");
 
-                    b.Property<string>("BlacklistCode")
+                    b.Property<string>("ArtifactCode")
                         .HasColumnType("text")
-                        .HasColumnName("blacklist_code");
+                        .HasColumnName("artifact_code");
 
-                    b.Property<int?>("BlacklistType")
+                    b.Property<int?>("ArtifactType")
                         .HasColumnType("integer")
-                        .HasColumnName("blacklist_type");
+                        .HasColumnName("artifact_type");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("timestamp with time zone")
@@ -90,9 +93,9 @@ namespace ads_api.Migrations
                         .HasColumnType("text")
                         .HasColumnName("tags");
 
-                    b.HasKey("BlacklistId");
+                    b.HasKey("ArtifactId");
 
-                    b.ToTable("Blacklists");
+                    b.ToTable("Artifacts");
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MOrganization", b =>

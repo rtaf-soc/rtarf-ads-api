@@ -12,5 +12,6 @@ namespace Its.Ads.Api.Database
         public DbSet<MUser>? Users { get; set; }
         public DbSet<MOrganizationUser>? OrganizationUsers { get; set; }
         public DbSet<MWorkFlow>? Workflows { get; set; }
+        public DbSet<MBlacklist>? Blacklists { get; set; }
     }
 }

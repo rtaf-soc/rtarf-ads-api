@@ -21,6 +21,7 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MOrganizationUser>? OrganizationUsers { get; set; }
     public DbSet<MWorkflowTemplate>? WorkflowTemplates { get; set; }
     public DbSet<MWorkFlow>? Workflows { get; set; }
+    public DbSet<MBlacklist>? Blacklists { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,5 +32,6 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MOrganizationUser>();
         modelBuilder.Entity<MWorkflowTemplate>();
         modelBuilder.Entity<MWorkFlow>();
+        modelBuilder.Entity<MBlacklist>();
     }
 }
