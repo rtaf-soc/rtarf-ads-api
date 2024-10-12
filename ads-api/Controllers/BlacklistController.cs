@@ -50,8 +50,8 @@ namespace Its.Ads.Api.Controllers
 
         [ExcludeFromCodeCoverage]
         [HttpGet]
-        [Route("org/{id}/action/CheckBlackListByCode/{artifactCode}")]
-        public MBlacklist CheckBlackListByCode(string id, string artifactCode)
+        [Route("org/{id}/action/GetBlackListByCode/{artifactCode}")]
+        public MBlacklist GetBlackListByCode(string id, string artifactCode)
         {
             var result = svc.GetBlacklistByCode(id, artifactCode);
             return result;

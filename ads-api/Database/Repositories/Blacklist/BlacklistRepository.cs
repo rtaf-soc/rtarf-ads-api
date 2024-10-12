@@ -82,7 +82,9 @@ namespace Its.Ads.Api.Database.Repositories
 
         public MBlacklist GetBlacklistById(string artifactId)
         {
-            var u = context!.Blacklists!.Where(p => p!.BlacklistId!.Equals(artifactId) && p!.OrgId!.Equals(orgId)).FirstOrDefault();
+            Guid id = Guid.Parse(artifactId);
+
+            var u = context!.Blacklists!.Where(p => p!.BlacklistId!.Equals(id) && p!.OrgId!.Equals(orgId)).FirstOrDefault();
             return u!;
         }
 

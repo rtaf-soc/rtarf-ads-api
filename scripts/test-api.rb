@@ -46,7 +46,7 @@ def invoke_api(orgId, apiName, apiObj, endpointObj, dataObj)
   https = Net::HTTP.new(uriObj.host, uriObj.port)
   https.use_ssl = true
   https.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  https.read_timeout = 1
+  https.read_timeout = 10
   https.open_timeout = 1
   https.max_retries = 0
 
