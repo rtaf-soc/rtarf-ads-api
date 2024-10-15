@@ -22,7 +22,7 @@ namespace Its.Ads.Api.Models
         public string? Zone { get; set; }
 
         [Column("description")] /* 1=SrcIP, 2=DestIP, 3=Domain, 4=Hash, 5=FileName */
-        public int? Description { get; set; }
+        public string? Description { get; set; }
 
         [Column("created_date")]
         public DateTime? CreatedDate { get; set; }

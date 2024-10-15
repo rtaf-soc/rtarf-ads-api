@@ -74,11 +74,6 @@ namespace Its.Ads.Api.Controllers
         [Route("org/{id}/action/GetBlacklistCount")]
         public IActionResult GetBlacklistCount(string id, [FromBody] VMBlacklist param)
         {
-            if (param.Limit <= 0)
-            {
-                param.Limit = 100;
-            }
-
             var result = svc.GetBlacklistCount(id, param);
             return Ok(result);
         }
