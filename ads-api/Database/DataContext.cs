@@ -22,6 +22,7 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MWorkflowTemplate>? WorkflowTemplates { get; set; }
     public DbSet<MWorkFlow>? Workflows { get; set; }
     public DbSet<MBlacklist>? Blacklists { get; set; }
+    public DbSet<MIpMap>? IpMaps { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -33,5 +34,6 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MWorkflowTemplate>();
         modelBuilder.Entity<MWorkFlow>();
         modelBuilder.Entity<MBlacklist>();
+        modelBuilder.Entity<MIpMap>();
     }
 }
