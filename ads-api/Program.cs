@@ -44,6 +44,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<IWorkflowService, WorkflowService>();
             builder.Services.AddScoped<IBlacklistService, BlacklistService>();
             builder.Services.AddScoped<IIpMapService, IpMapService>();
+            builder.Services.AddScoped<IIocHostService, IocHostService>();
 
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<IApiKeyRepository, ApiKeyRepository>();
@@ -52,6 +53,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<IWorkflowRepository, WorkflowRepository>();
             builder.Services.AddScoped<IBlacklistRepository, BlacklistRepository>();
             builder.Services.AddScoped<IIpMapRepository, IpMapRepository>();
+            builder.Services.AddScoped<IIocHostRepository, IocHostRepository>();
 
             builder.Services.AddTransient<IAuthorizationHandler, GenericRbacHandler>();
             builder.Services.AddScoped<IBasicAuthenticationRepo, BasicAuthenticationRepo>();

@@ -14,5 +14,6 @@ namespace Its.Ads.Api.Database
         public DbSet<MWorkFlow>? Workflows { get; set; }
         public DbSet<MBlacklist>? Blacklists { get; set; }
         public DbSet<MIpMap>? IpMaps { get; set; }
+        public DbSet<MIocHost>? IocHosts { get; set; }
     }
 }
