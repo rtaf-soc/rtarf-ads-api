@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250106005039_LogAggregate_001")]
+    partial class LogAggregate_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,10 +184,6 @@ namespace ads_api.Migrations
                     b.Property<string>("AggregatorName")
                         .HasColumnType("text")
                         .HasColumnName("aggregator_name");
-
-                    b.Property<string>("AggregatorType")
-                        .HasColumnType("text")
-                        .HasColumnName("aggregator_type");
 
                     b.Property<string>("CacheKey")
                         .HasColumnType("text")
