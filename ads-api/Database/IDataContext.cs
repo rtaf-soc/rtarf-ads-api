@@ -16,5 +16,6 @@ namespace Its.Ads.Api.Database
         public DbSet<MIpMap>? IpMaps { get; set; }
         public DbSet<MIocHost>? IocHosts { get; set; }
         public DbSet<MSystemVariable>? SystemVariables { get; set; }
+        public DbSet<MLogAggregate>? LogAggregates { get; set; }
     }
 }
