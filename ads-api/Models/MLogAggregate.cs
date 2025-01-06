@@ -1,11 +1,14 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using IndexAttribute = Microsoft.EntityFrameworkCore.IndexAttribute;
 
 namespace Its.Ads.Api.Models
 {
     [ExcludeFromCodeCoverage]
     [Table("LogAggregates")]
+    [Index(nameof(CacheKey), IsUnique = true, Name = "CacheKey_Unique1")]
+
     public class MLogAggregate
     {
         [Key]
