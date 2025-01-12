@@ -54,6 +54,12 @@ namespace Its.Ads.Api.Models
         [Column("transport")]
         public string? Transport { get; set; }
 
+        [Column("mitr_attack_pattern")]
+        public string? MittrAttackPattern { get; set; }
+
+        [Column("mitr_ioc_key")]
+        public string? MittrIocKey { get; set; } //Dest IP, Src IP, File Hash
+
         [Column("evnet_count")]
         public long? EventCount { get; set; }
 
