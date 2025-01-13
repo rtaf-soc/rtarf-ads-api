@@ -60,6 +60,9 @@ namespace Its.Ads.Api.Models
         [Column("mitr_ioc_key")]
         public string? MittrIocKey { get; set; } //Dest IP, Src IP, File Hash
 
+        [Column("misp_threat_level")]
+        public string? MispThreatLevel { get; set; }
+
         [Column("evnet_count")]
         public long? EventCount { get; set; }
 
