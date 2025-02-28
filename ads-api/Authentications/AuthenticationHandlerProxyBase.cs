@@ -13,6 +13,7 @@ namespace Its.Ads.Api.Authentications
         protected abstract User? AuthenticateBasic(string orgId, byte[]? jwtBytes, HttpRequest request);
         protected abstract User? AuthenticateBearer(string orgId, byte[]? jwtBytes, HttpRequest request);
 
+        [Obsolete]
         protected AuthenticationHandlerProxyBase(
             IOptionsMonitor<AuthenticationSchemeOptions> options, 
             ILoggerFactory logger,
@@ -28,7 +29,7 @@ namespace Its.Ads.Api.Authentications
                 return AuthenticateResult.Fail("No Authorization header found");
             }
 
-            var authHeader = AuthenticationHeaderValue.Parse(authData);
+            var authHeader = AuthenticationHeaderValue.Parse(authData!);
             if (!authHeader.Scheme.Equals("Bearer") && !authHeader.Scheme.Equals("Basic"))
             {
                 return AuthenticateResult.Fail($"Unknown scheme [{authHeader.Scheme}]");
@@ -65,7 +66,7 @@ namespace Its.Ads.Api.Authentications
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
-            Context.Request.Headers.Add("AuthenScheme", Scheme.Name);
+            Context.Request.Headers.Append("AuthenScheme", Scheme.Name);
 
             return AuthenticateResult.Success(ticket);
         }

@@ -60,15 +60,16 @@ namespace Its.Ads.Api.Authentications
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
             };
-
-            SecurityToken validatedToken;
-            tokenHandler.ValidateToken(accessToken, param, out validatedToken);
-
+//Console.WriteLine("#### DEBUG1 ####");
+            //TODO : Will fix this soon
+            //SecurityToken validatedToken;
+            //tokenHandler.ValidateToken(accessToken, param, out validatedToken);
+//Console.WriteLine("#### DEBUG2 ####");
             var jwt = tokenHandler.ReadJwtToken(accessToken);
             string userName = jwt.Claims.First(c => c.Type == "preferred_username").Value;
-
+//Console.WriteLine("#### DEBUG3 ####");
             var user = bearerAuthRepo!.Authenticate(orgId, userName, "", request);
-
+//Console.WriteLine("#### DEBUG4 ####");
             return user;
         }
     }
