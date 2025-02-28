@@ -50,26 +50,28 @@ namespace Its.Ads.Api.Authentications
             var accessToken = Encoding.UTF8.GetString(jwtBytes!);
             var tokenHandler = new JwtSecurityTokenHandler();
 
+            //Important : In Keycloak keys setting we must enable only 1 key proder 'RS256'.
+            //https://keycloak.devops.napbiotec.io/auth/realms/rtarf-ads-dev/protocol/openid-connect/certs
+            var securityKey = signer.GetSignedKey(config["SSO:signedKeyUrl"]);
             var param = new TokenValidationParameters()
             {
                 ValidIssuer = config["SSO:issuer"],
                 ValidAudience = config["SSO:audience"],
-                IssuerSigningKey = signer.GetSignedKey(config["SSO:signedKeyUrl"]),
+                IssuerSigningKey = securityKey,
                 ValidateIssuer = true,
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
             };
-//Console.WriteLine("#### DEBUG1 ####");
-            //TODO : Will fix this soon
-            //SecurityToken validatedToken;
-            //tokenHandler.ValidateToken(accessToken, param, out validatedToken);
-//Console.WriteLine("#### DEBUG2 ####");
+
+            SecurityToken validatedToken;
+            tokenHandler.ValidateToken(accessToken, param, out validatedToken);
+
             var jwt = tokenHandler.ReadJwtToken(accessToken);
             string userName = jwt.Claims.First(c => c.Type == "preferred_username").Value;
-//Console.WriteLine("#### DEBUG3 ####");
+
             var user = bearerAuthRepo!.Authenticate(orgId, userName, "", request);
-//Console.WriteLine("#### DEBUG4 ####");
+
             return user;
         }
     }
