@@ -8,6 +8,7 @@ namespace Its.Ads.Api.Models
     [ExcludeFromCodeCoverage]
     [Table("LogAggregates")]
     [Index(nameof(CacheKey), IsUnique = true, Name = "CacheKey_Unique1")]
+    [Index(nameof(EventDateStr), IsUnique = false, Name = "EventDateStr_Idx1")]
 
     public class MLogAggregate
     {
