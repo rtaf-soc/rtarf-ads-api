@@ -69,6 +69,9 @@ namespace Its.Ads.Api.Models
         [Column("created_date")]
         public DateTime? CreatedDate { get; set; }
 
+        [Column("yyyymmdd")]
+        public string? EventDateStr { get; set; }
+
         public MLogAggregate()
         {
             LogAggregateId = Guid.NewGuid();
