@@ -73,6 +73,31 @@ namespace Its.Ads.Api.Models
         [Column("yyyymmdd")]
         public string? EventDateStr { get; set; }
 
+
+        [Column("cs_event_name")]
+        public string? CsEventName { get; set; }
+
+        [Column("cs_incident_type")]
+        public string? CsIncidentType { get; set; }
+
+        [Column("cs_computer_name")]
+        public string? CsComputerName { get; set; }
+
+        [Column("cs_user_name")]
+        public string? CsUserName { get; set; }
+
+        [Column("cs_detect_name")]
+        public string? CsDetectName { get; set; }
+
+        [Column("cs_file_name")]
+        public string? CsFileName { get; set; }
+
+        [Column("cs_ioc_type")]
+        public string? CsIOCType { get; set; }
+
+        [Column("cs_local_ip")]
+        public string? CsLocalIP { get; set; }
+
         public MLogAggregate()
         {
             LogAggregateId = Guid.NewGuid();
