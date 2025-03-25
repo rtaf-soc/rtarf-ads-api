@@ -98,6 +98,52 @@ namespace Its.Ads.Api.Models
         [Column("cs_local_ip")]
         public string? CsLocalIP { get; set; }
 
+        //Zeek custom fields
+        [Column("custom_field1")]
+        public string? CustomField1 { get; set; }
+
+        [Column("custom_field2")]
+        public string? CustomField2 { get; set; }
+
+        [Column("custom_field3")]
+        public string? CustomField3 { get; set; }
+
+        [Column("custom_field4")]
+        public string? CustomField4 { get; set; }
+
+        [Column("custom_field5")]
+        public string? CustomField5 { get; set; }
+
+        [Column("custom_field6")]
+        public string? CustomField6 { get; set; }
+
+        [Column("custom_field7")]
+        public string? CustomField7 { get; set; }
+
+        [Column("custom_field8")]
+        public string? CustomField8 { get; set; }
+
+        [Column("custom_field9")]
+        public string? CustomField9 { get; set; }
+
+        [Column("custom_field10")]
+        public string? CustomField10 { get; set; }
+
+        [Column("custom_field11")]
+        public string? CustomField11 { get; set; }
+
+        [Column("custom_field12")]
+        public string? CustomField12 { get; set; }
+
+        [Column("custom_field13")]
+        public string? CustomField13 { get; set; }
+
+        [Column("custom_field14")]
+        public string? CustomField14 { get; set; }
+
+        [Column("custom_field15")]
+        public string? CustomField15 { get; set; }
+
         public MLogAggregate()
         {
             LogAggregateId = Guid.NewGuid();
