@@ -9,6 +9,25 @@ namespace Its.Ads.Api.Models
     [Table("LogAggregates")]
     [Index(nameof(CacheKey), IsUnique = true, Name = "CacheKey_Unique1")]
     [Index(nameof(EventDateStr), IsUnique = false, Name = "EventDateStr_Idx1")]
+    [Index(nameof(EventDate), IsUnique = false, Name = "EventDate_Idx1")]
+    [Index(nameof(DataSet), IsUnique = false, Name = "DataSet_Idx1")]
+    [Index(nameof(AggregatorName), IsUnique = false, Name = "AggregatorName_Idx1")]
+    [Index(nameof(AggregatorType), IsUnique = false, Name = "AggregatorType_Idx1")]
+    [Index(nameof(SourceIp), IsUnique = false, Name = "SourceIp_Idx1")]
+    [Index(nameof(SourceNetwork), IsUnique = false, Name = "SourceNetwork_Idx1")]
+    [Index(nameof(DestinationIp), IsUnique = false, Name = "DestinationIp_Idx1")]
+    [Index(nameof(DestinationNetwork), IsUnique = false, Name = "DestinationNetwork_Idx1")]
+    [Index(nameof(CustomField1), IsUnique = false, Name = "CustomField1_Idx1")]
+    [Index(nameof(CustomField2), IsUnique = false, Name = "CustomField2_Idx1")]
+    [Index(nameof(CustomField3), IsUnique = false, Name = "CustomField3_Idx1")]
+    [Index(nameof(CustomField4), IsUnique = false, Name = "CustomField4_Idx1")]
+    [Index(nameof(CustomField5), IsUnique = false, Name = "CustomField5_Idx1")]
+    [Index(nameof(CustomField6), IsUnique = false, Name = "CustomField6_Idx1")]
+    [Index(nameof(CustomField7), IsUnique = false, Name = "CustomField7_Idx1")]
+    [Index(nameof(CustomField8), IsUnique = false, Name = "CustomField8_Idx1")]
+    [Index(nameof(CustomField9), IsUnique = false, Name = "CustomField9_Idx1")]
+    [Index(nameof(CustomField10), IsUnique = false, Name = "CustomField10_Idx1")]
+
 
     public class MLogAggregate
     {
