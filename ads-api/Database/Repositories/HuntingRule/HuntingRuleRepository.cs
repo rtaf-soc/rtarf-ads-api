@@ -1,4 +1,6 @@
 using Its.Ads.Api.Models;
+using Its.Ads.Api.ViewsModels;
+using LinqKit;
 using Microsoft.EntityFrameworkCore;
 
 namespace Its.Ads.Api.Database.Repositories
@@ -42,10 +44,69 @@ namespace Its.Ads.Api.Database.Repositories
             return r;
         }
 
-        public IEnumerable<MHuntingRule> GetHuntingRules()
+        public IEnumerable<MHuntingRule> GetHuntingRules(VMHuntingRule param)
         {
-            var arr = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId)).ToList();
+            var limit = 0;
+            var offset = 0;
+
+            //Param will never be null
+            if (param.Offset > 0)
+            {
+                //Convert to zero base
+                offset = param.Offset-1;
+            }
+
+            if (param.Limit > 0)
+            {
+                limit = param.Limit;
+            }
+
+            var predicate = HuntingRulePredicate(param!);
+            var arr = context!.HuntingRules!.Where(predicate)
+                .OrderByDescending(e => e.RuleCreatedDate)
+                .Skip(offset)
+                .Take(limit)
+                .ToList();
+
             return arr;
+        }
+
+        private ExpressionStarter<MHuntingRule> HuntingRulePredicate(VMHuntingRule param)
+        {
+            var pd = PredicateBuilder.New<MHuntingRule>();
+
+            pd = pd.And(p => p.OrgId!.Equals(orgId));
+
+            if ((param.FullTextSearch != "") && (param.FullTextSearch != null))
+            {
+                var fullTextPd = PredicateBuilder.New<MHuntingRule>();
+                fullTextPd = fullTextPd.Or(p => p.RuleName!.Contains(param.FullTextSearch));
+                fullTextPd = fullTextPd.Or(p => p.RuleDescription!.Contains(param.FullTextSearch));
+
+                pd = pd.And(fullTextPd);
+            }
+
+            return pd;
+        }
+
+        public int GetHuntingRuleCount(VMHuntingRule param)
+        {
+            var predicate = HuntingRulePredicate(param);
+            var cnt = context!.HuntingRules!.Where(predicate).Count();
+
+            return cnt;
+        }
+
+        public Task<MHuntingRule> GetHuntingRuleByName(string ruleName)
+        {
+            var result = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId) && x.RuleName!.Equals(ruleName)).FirstOrDefaultAsync();
+            return result!;
+        }
+
+        public MHuntingRule? UpdateHuntingRuleById(string huntingRuleId, MHuntingRule huntingRule)
+        {
+            //TODO : Implement this
+            return null;
         }
     }
 }
