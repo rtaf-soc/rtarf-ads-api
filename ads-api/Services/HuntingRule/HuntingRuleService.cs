@@ -95,8 +95,25 @@ namespace Its.Ads.Api.Services
 
         public MVHuntingRule? UpdateHuntingRuleById(string orgId, string huntingRuleId, MHuntingRule huntingRule)
         {
-            //TODO : Implement this
-            return null;
+            var r = new MVHuntingRule()
+            {
+                Status = "OK",
+                Description = "Success"
+            };
+
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.UpdateHuntingRuleById(huntingRuleId, huntingRule);
+
+            if (result == null)
+            {
+                r.Status = "NOTFOUND";
+                r.Description = $"Rule ID [{huntingRuleId}] not found for the organization [{orgId}]";
+                
+                return r;
+            }
+
+            r.HuntingRule = result;
+            return r;
         }
 
         public int GetHuntingRuleCount(string orgId, VMHuntingRule param)
