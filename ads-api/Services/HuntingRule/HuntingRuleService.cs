@@ -24,10 +24,10 @@ namespace Its.Ads.Api.Services
 
         public Task<MHuntingRule> GetHuntingRuleById(string orgId, string ruleId)
         {
-Console.WriteLine("DEBUG_10");
+//Console.WriteLine("DEBUG_10");
             repository!.SetCustomOrgId(orgId);
             var result = repository!.GetHuntingRule(ruleId);
-Console.WriteLine("DEBUG_11");
+//Console.WriteLine("DEBUG_11");
             return result;
         }
 
