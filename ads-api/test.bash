@@ -8,6 +8,6 @@ ENDPOINT_GET_VARIABLES="http://api-dev.please-scan.com/api/HuntingRule/org/defau
 
 curl -v -X POST ${ENDPOINT_GET_VARIABLES} \
 -H "Content-Type: application/json; charset= utf-8" \
--u "dummy:7869f6f3-2506-4653-b899-b2fce0e5333c" --data '{"FullTextSearch": "hello"}'
+-u "dummy:${API_KEY}" --data '{"FullTextSearch": "hello"}'
 
 #-H "Authorization: Bearer ${TOKEN_BASE64}" --data '{"FullTextSearch": ""}'
