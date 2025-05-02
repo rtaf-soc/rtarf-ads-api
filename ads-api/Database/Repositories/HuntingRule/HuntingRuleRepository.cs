@@ -14,11 +14,9 @@ namespace Its.Ads.Api.Database.Repositories
 
         public Task<MHuntingRule> GetHuntingRule(string ruleId)
         {
-//Console.WriteLine("DEBUG_100");
             Guid id = Guid.Parse(ruleId);
-//Console.WriteLine("DEBUG_101");
             var result = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId) && x.RuleId!.Equals(id)).FirstOrDefaultAsync();
-//Console.WriteLine("DEBUG_102");
+
             return result!;
         }
 
@@ -90,6 +88,14 @@ namespace Its.Ads.Api.Database.Repositories
                 pd = pd.And(fullTextPd);
             }
 
+            if ((param.RefType != "") && (param.RefType != null))
+            {
+                var fullTextPd = PredicateBuilder.New<MHuntingRule>();
+                fullTextPd = fullTextPd.Or(p => p.RefType!.Equals(param.RefType));
+
+                pd = pd.And(fullTextPd);
+            }
+
             return pd;
         }
 
@@ -109,8 +115,18 @@ namespace Its.Ads.Api.Database.Repositories
 
         public MHuntingRule? UpdateHuntingRuleById(string huntingRuleId, MHuntingRule huntingRule)
         {
-            //TODO : Implement this
-            return null;
+            Guid id = Guid.Parse(huntingRuleId);
+            var result = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId) && x.RuleId!.Equals(id)).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.RuleDescription = huntingRule.RuleDescription;
+                result.RuleDefinition = huntingRule.RuleDefinition;
+
+                context!.SaveChanges();
+            }
+
+            return result!;
         }
     }
 }

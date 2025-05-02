@@ -6,5 +6,6 @@ namespace Its.Ads.Api.ViewsModels
     public class VMHuntingRule : VMQueryBase
     {
         public string? FullTextSearch { get; set; }
+        public string? RefType { get; set; }
     }
 }
