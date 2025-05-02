@@ -14,7 +14,9 @@ namespace Its.Ads.Api.Database.Repositories
 
         public Task<MHuntingRule> GetHuntingRule(string ruleId)
         {
-            var result = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId) && x.RuleId!.Equals(ruleId)).FirstOrDefaultAsync();
+            Guid id = Guid.Parse(ruleId);
+            var result = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId) && x.RuleId!.Equals(id)).FirstOrDefaultAsync();
+            
             return result!;
         }
 

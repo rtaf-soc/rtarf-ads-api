@@ -40,7 +40,7 @@ namespace Its.Ads.Api.Controllers
         }
 
         [ExcludeFromCodeCoverage]
-        [HttpDelete]
+        [HttpPut]
         [Route("org/{id}/action/UpdateHuntingRuleById/{ruleId}")]
         public IActionResult UpdateHuntingRuleById(string id, string ruleId, [FromBody] MHuntingRule request)
         {
