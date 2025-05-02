@@ -108,7 +108,7 @@ namespace Its.Ads.Api.Services
             {
                 r.Status = "NOTFOUND";
                 r.Description = $"Rule ID [{huntingRuleId}] not found for the organization [{orgId}]";
-                
+
                 return r;
             }
 
