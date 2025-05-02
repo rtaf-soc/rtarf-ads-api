@@ -53,7 +53,9 @@ namespace Its.Ads.Api.Controllers
         [Route("org/{id}/action/GetHuntingRuleById/{ruleId}")]
         public IActionResult GetHuntingRuleById(string id, string ruleId)
         {
+Console.WriteLine("DEBUG_1");
             var result = svc.GetHuntingRuleById(id, ruleId);
+Console.WriteLine("DEBUG_2");
             return Ok(result);
         }
 

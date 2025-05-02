@@ -14,9 +14,11 @@ namespace Its.Ads.Api.Database.Repositories
 
         public Task<MHuntingRule> GetHuntingRule(string ruleId)
         {
+Console.WriteLine("DEBUG_100");
             Guid id = Guid.Parse(ruleId);
+Console.WriteLine("DEBUG_101");
             var result = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId) && x.RuleId!.Equals(id)).FirstOrDefaultAsync();
-            
+Console.WriteLine("DEBUG_102");
             return result!;
         }
 
