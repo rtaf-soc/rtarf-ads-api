@@ -9,6 +9,7 @@ namespace Its.Ads.Api.Models
     [Table("HuntingRules")]
     [Index(nameof(RuleName), IsUnique = true)]
     [Index(nameof(OrgId))]
+    [Index(nameof(RefType))]
     public class MHuntingRule
     {
         [Key]
@@ -32,6 +33,9 @@ namespace Its.Ads.Api.Models
 
         [Column("ref_url")]
         public string? RefUrl { get; set; }
+
+        [Column("ref_type")]
+        public string? RefType { get; set; } /* Sigma, Suricata, Yara */
 
         [Column("tags")]
         public string? Tags { get; set; }
