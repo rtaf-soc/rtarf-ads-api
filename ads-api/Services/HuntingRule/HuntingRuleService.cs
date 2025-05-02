@@ -6,12 +6,12 @@ using Its.Ads.Api.Utils;
 
 namespace Its.Ads.Api.Services
 {
-    public class HuntingRulevice : BaseService, IHuntingRuleService
+    public class HuntingRuleService : BaseService, IHuntingRuleService
     {
         private readonly IHuntingRuleRepository? repository = null;
         private DateTime compareDate = DateTime.Now;
 
-        public HuntingRulevice(IHuntingRuleRepository repo) : base()
+        public HuntingRuleService(IHuntingRuleRepository repo) : base()
         {
             repository = repo;
         }
