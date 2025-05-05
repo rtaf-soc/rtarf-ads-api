@@ -26,6 +26,7 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MIocHost>? IocHosts { get; set; }
     public DbSet<MSystemVariable>? SystemVariables { get; set; }
     public DbSet<MLogAggregate>? LogAggregates { get; set; }
+    public DbSet<MHuntingRule>? HuntingRules { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -41,5 +42,6 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MIocHost>();
         modelBuilder.Entity<MSystemVariable>();
         modelBuilder.Entity<MLogAggregate>();
+        modelBuilder.Entity<MHuntingRule>();
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250429235547_HuntingRule_001")]
+    partial class HuntingRule_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,10 +109,6 @@ namespace ads_api.Migrations
                         .HasColumnType("text")
                         .HasColumnName("org_id");
 
-                    b.Property<string>("RefType")
-                        .HasColumnType("text")
-                        .HasColumnName("ref_type");
-
                     b.Property<string>("RefUrl")
                         .HasColumnType("text")
                         .HasColumnName("ref_url");
@@ -137,8 +136,6 @@ namespace ads_api.Migrations
                     b.HasKey("RuleId");
 
                     b.HasIndex("OrgId");
-
-                    b.HasIndex("RefType");
 
                     b.HasIndex("RuleName")
                         .IsUnique();
