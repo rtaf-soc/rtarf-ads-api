@@ -90,6 +90,12 @@ namespace Its.Ads.Api.Services
             repository!.SetCustomOrgId(orgId);
             var result = repository!.GetHuntingRules(param);
 
+            foreach (var item in result)
+            {
+                //We don't need to returen this field because it is very big
+                item.RuleDefinition = "***** VERY BIG *****";
+            }
+
             return result;
         }
 
