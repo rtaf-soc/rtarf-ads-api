@@ -85,6 +85,7 @@ namespace Its.Ads.Api.Database.Repositories
                 fullTextPd = fullTextPd.Or(p => p.RuleName!.Contains(param.FullTextSearch));
                 fullTextPd = fullTextPd.Or(p => p.RuleDescription!.Contains(param.FullTextSearch));
                 fullTextPd = fullTextPd.Or(p => p.Tags!.Contains(param.FullTextSearch));
+                fullTextPd = fullTextPd.Or(p => p.RefUrl!.Contains(param.FullTextSearch));
 
                 pd = pd.And(fullTextPd);
             }
