@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250507125836_Cases_001")]
+    partial class Cases_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -494,109 +497,6 @@ namespace ads_api.Migrations
                     b.HasIndex(new[] { "SourceNetwork" }, "SourceNetwork_Idx1");
 
                     b.ToTable("LogAggregates");
-                });
-
-            modelBuilder.Entity("Its.Ads.Api.Models.MLogAggregateFirewall", b =>
-                {
-                    b.Property<Guid?>("LogAggregateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("log_aggregate_id");
-
-                    b.Property<string>("AggregatorName")
-                        .HasColumnType("text")
-                        .HasColumnName("aggregator_name");
-
-                    b.Property<string>("AggregatorType")
-                        .HasColumnType("text")
-                        .HasColumnName("aggregator_type");
-
-                    b.Property<string>("CacheKey")
-                        .HasColumnType("text")
-                        .HasColumnName("cache_key");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("text")
-                        .HasColumnName("country");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
-
-                    b.Property<string>("DataSet")
-                        .HasColumnType("text")
-                        .HasColumnName("data_set");
-
-                    b.Property<string>("DestinationIp")
-                        .HasColumnType("text")
-                        .HasColumnName("destination_ip");
-
-                    b.Property<string>("DestinationNetwork")
-                        .HasColumnType("text")
-                        .HasColumnName("destination_network");
-
-                    b.Property<DateTime?>("EventDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("event_date");
-
-                    b.Property<string>("EventDateStr")
-                        .HasColumnType("text")
-                        .HasColumnName("yyyymmdd");
-
-                    b.Property<string>("LoaderName")
-                        .HasColumnType("text")
-                        .HasColumnName("loader_name");
-
-                    b.Property<string>("OrgId")
-                        .HasColumnType("text")
-                        .HasColumnName("org_id");
-
-                    b.Property<string>("Protocol")
-                        .HasColumnType("text")
-                        .HasColumnName("protocol");
-
-                    b.Property<string>("SourceIp")
-                        .HasColumnType("text")
-                        .HasColumnName("source_ip");
-
-                    b.Property<string>("SourceNetwork")
-                        .HasColumnType("text")
-                        .HasColumnName("source_network");
-
-                    b.HasKey("LogAggregateId");
-
-                    b.HasIndex(new[] { "AggregatorName" }, "AggregatorName_Idx1")
-                        .HasDatabaseName("AggregatorName_Idx11");
-
-                    b.HasIndex(new[] { "AggregatorType" }, "AggregatorType_Idx1")
-                        .HasDatabaseName("AggregatorType_Idx11");
-
-                    b.HasIndex(new[] { "CacheKey" }, "CacheKey_Unique1")
-                        .IsUnique()
-                        .HasDatabaseName("CacheKey_Unique11");
-
-                    b.HasIndex(new[] { "DataSet" }, "DataSet_Idx1")
-                        .HasDatabaseName("DataSet_Idx11");
-
-                    b.HasIndex(new[] { "DestinationIp" }, "DestinationIp_Idx1")
-                        .HasDatabaseName("DestinationIp_Idx11");
-
-                    b.HasIndex(new[] { "DestinationNetwork" }, "DestinationNetwork_Idx1")
-                        .HasDatabaseName("DestinationNetwork_Idx11");
-
-                    b.HasIndex(new[] { "EventDateStr" }, "EventDateStr_Idx1")
-                        .HasDatabaseName("EventDateStr_Idx11");
-
-                    b.HasIndex(new[] { "EventDate" }, "EventDate_Idx1")
-                        .HasDatabaseName("EventDate_Idx11");
-
-                    b.HasIndex(new[] { "SourceIp" }, "SourceIp_Idx1")
-                        .HasDatabaseName("SourceIp_Idx11");
-
-                    b.HasIndex(new[] { "SourceNetwork" }, "SourceNetwork_Idx1")
-                        .HasDatabaseName("SourceNetwork_Idx11");
-
-                    b.ToTable("LogAggregatesFirewall");
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MOrganization", b =>

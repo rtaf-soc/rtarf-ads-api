@@ -27,6 +27,8 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MSystemVariable>? SystemVariables { get; set; }
     public DbSet<MLogAggregate>? LogAggregates { get; set; }
     public DbSet<MHuntingRule>? HuntingRules { get; set; }
+    public DbSet<MCases>? Cases { get; set; }
+    public DbSet<MLogAggregateFirewall>? LogAggregatesFirewall { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -43,5 +45,7 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MSystemVariable>();
         modelBuilder.Entity<MLogAggregate>();
         modelBuilder.Entity<MHuntingRule>();
+        modelBuilder.Entity<MCases>();
+        modelBuilder.Entity<MLogAggregateFirewall>();
     }
 }
