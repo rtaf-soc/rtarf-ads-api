@@ -100,5 +100,28 @@ namespace Its.Ads.Api.Services
 
             return result;
         }
+
+        public MVBlacklist? UpdateBlacklistById(string orgId, string blacklistId, MBlacklist blacklist)
+        {
+            var r = new MVBlacklist()
+            {
+                Status = "OK",
+                Description = "Success"
+            };
+
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.UpdateBlackListById(blacklistId, blacklist);
+
+            if (result == null)
+            {
+                r.Status = "NOTFOUND";
+                r.Description = $"Blacklist ID [{blacklistId}] not found for the organization [{orgId}]";
+
+                return r;
+            }
+
+            r.Blacklist = result;
+            return r;
+        }
     }
 }
