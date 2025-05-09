@@ -77,5 +77,14 @@ namespace Its.Ads.Api.Controllers
             var result = svc.GetBlacklistCount(id, param);
             return Ok(result);
         }
+
+        [ExcludeFromCodeCoverage]
+        [HttpPost]
+        [Route("org/{id}/action/UpdateBlacklistById/{blacklistId}")]
+        public IActionResult UpdateBlacklistById(string id, string blacklistId, [FromBody] MBlacklist request)
+        {
+            var result = svc.UpdateBlacklistById(id, blacklistId, request);
+            return Ok(result);
+        }
     }
 }

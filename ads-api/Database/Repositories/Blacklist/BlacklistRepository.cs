@@ -38,6 +38,7 @@ namespace Its.Ads.Api.Database.Repositories
             {
                 var fullTextPd = PredicateBuilder.New<MBlacklist>();
                 fullTextPd = fullTextPd.Or(p => p.BlacklistCode!.Contains(param.FullTextSearch));
+                fullTextPd = fullTextPd.Or(p => p.Tags!.Contains(param.FullTextSearch));
 
                 pd = pd.And(fullTextPd);
             }
@@ -114,6 +115,22 @@ namespace Its.Ads.Api.Database.Repositories
             }
 
             return r;
+        }
+
+        public MBlacklist? UpdateBlackListById(string blacklistId, MBlacklist blacklist)
+        {
+            Guid id = Guid.Parse(blacklistId);
+            var result = context!.Blacklists!.Where(x => x.OrgId!.Equals(orgId) && x.BlacklistId!.Equals(blacklistId)).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.BlacklistCode = blacklist.BlacklistCode;
+                result.Tags = blacklist.Tags;
+
+                context!.SaveChanges();
+            }
+
+            return result!;
         }
     }
 }

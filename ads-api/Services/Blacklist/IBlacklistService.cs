@@ -12,5 +12,7 @@ namespace Its.Ads.Api.Services
         public IEnumerable<MBlacklist> GetBlacklists(string orgId, VMBlacklist param);
         public int GetBlacklistCount(string orgId, VMBlacklist param);
         public MBlacklist GetBlacklistByCode(string orgId, string artifactCode);
+
+        public MVBlacklist? UpdateBlacklistById(string orgId, string blacklistId, MBlacklist blacklist);
     }
 }
