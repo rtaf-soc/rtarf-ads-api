@@ -42,6 +42,43 @@ namespace Its.Ads.Api.Models
         [Column("created_date")]
         public DateTime? CreatedDate { get; set; }
 
+
+        [Column("case_title")]
+        public string? CaseTitle { get; set; }
+
+        [Column("case_ref_id")]
+        public string? CaseRefId { get; set; }
+
+        [Column("case_pap")]
+        public string? CasePap { get; set; }
+
+        [Column("case_severity")]
+        public string? CaseSeverity { get; set; }
+
+        [Column("case_summary")]
+        public string? CaseSummary { get; set; }
+
+        [Column("update_by")]
+        public string? UpdateBy { get; set; }
+
+        [Column("solution_status")]
+        public string? ResolutionStatus { get; set; }
+
+        [Column("case_tlp")]
+        public string? CaseTlp { get; set; }
+
+        [Column("impact_status")]
+        public string? ImpactStatus { get; set; }
+
+        [Column("start_date")]
+        public DateTime? StartDate { get; set; }
+
+        [Column("update_at")]
+        public DateTime? UpdateAt { get; set; }
+
+        [Column("tags")]
+        public string? Tags { get; set; }
+
         public MCases()
         {
             CaseId = Guid.NewGuid();
