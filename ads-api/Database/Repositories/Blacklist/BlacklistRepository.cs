@@ -120,7 +120,7 @@ namespace Its.Ads.Api.Database.Repositories
         public MBlacklist? UpdateBlackListById(string blacklistId, MBlacklist blacklist)
         {
             Guid id = Guid.Parse(blacklistId);
-            var result = context!.Blacklists!.Where(x => x.OrgId!.Equals(orgId) && x.BlacklistId!.Equals(blacklistId)).FirstOrDefault();
+            var result = context!.Blacklists!.Where(x => x.OrgId!.Equals(orgId) && x.BlacklistId!.Equals(id)).FirstOrDefault();
 
             if (result != null)
             {
