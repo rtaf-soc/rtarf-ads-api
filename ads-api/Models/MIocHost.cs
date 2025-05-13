@@ -36,6 +36,9 @@ namespace Its.Ads.Api.Models
         [Column("created_date")]
         public DateTime? CreatedDate { get; set; }
 
+        [Column("tags")]
+        public string? Tags { get; set; }
+
         public MIocHost()
         {
             IocHostId = Guid.NewGuid();

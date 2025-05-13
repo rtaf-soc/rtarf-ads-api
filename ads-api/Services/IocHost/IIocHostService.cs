@@ -12,5 +12,6 @@ namespace Its.Ads.Api.Services
         public IEnumerable<MIocHost> GetIocHosts(string orgId, VMIocHost param);
         public int GetIocHostCount(string orgId, VMIocHost param);
         public MIocHost GetIocHostByCode(string orgId, string iocHostCode);
+        public MVIocHost? UpdateIocHostById(string orgId, string iocHostId, MIocHost iocHost);
     }
 }

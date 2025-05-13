@@ -77,5 +77,14 @@ namespace Its.Ads.Api.Controllers
             var result = svc.GetIocHostCount(id, param);
             return Ok(result);
         }
+
+        [ExcludeFromCodeCoverage]
+        [HttpPost]
+        [Route("org/{id}/action/UpdateIocHostById/{iocHostId}")]
+        public IActionResult UpdateIocHostById(string id, string iocHostId, [FromBody] MIocHost request)
+        {
+            var result = svc.UpdateIocHostById(id, iocHostId, request);
+            return Ok(result);
+        }
     }
 }

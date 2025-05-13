@@ -13,5 +13,6 @@ namespace Its.Ads.Api.Database.Repositories
         public MIocHost GetIocHostByCode(string iocHostCode);
         public MIocHost? DeleteIocHostById(string IocHostId);
         public bool IsIocHostCodeExist(string iocHostCode);
+        public MIocHost? UpdateIocHostById(string IocHostId, MIocHost iocHost);
     }
 }

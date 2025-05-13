@@ -29,12 +29,17 @@ namespace Its.Ads.Api.Database.Repositories
 
             pd = pd.And(p => p.OrgId!.Equals(orgId));
 
+            if ((param.IocType != null) && (param.IocType != ""))
+            {
+                pd = pd.And(p => p.IocType!.Equals(param.IocType));
+            }
+
             if ((param.FullTextSearch != "") && (param.FullTextSearch != null))
             {
                 var fullTextPd = PredicateBuilder.New<MIocHost>();
                 fullTextPd = fullTextPd.Or(p => p.IocHostCode!.Contains(param.FullTextSearch));
-                fullTextPd = fullTextPd.Or(p => p.IocType!.Contains(param.FullTextSearch));
                 fullTextPd = fullTextPd.Or(p => p.Description!.Contains(param.FullTextSearch));
+                fullTextPd = fullTextPd.Or(p => p.Tags!.Contains(param.FullTextSearch));
 
                 pd = pd.And(fullTextPd);
             }
@@ -110,6 +115,24 @@ namespace Its.Ads.Api.Database.Repositories
             }
 
             return r;
+        }
+
+        public MIocHost? UpdateIocHostById(string IocHostId, MIocHost iocHost)
+        {
+            Guid id = Guid.Parse(IocHostId);
+            var result = context!.IocHosts!.Where(x => x.OrgId!.Equals(orgId) && x.IocHostId!.Equals(id)).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.IocEndpoint = iocHost.IocEndpoint;
+                result.AuthenticationKey = iocHost.AuthenticationKey;
+                result.Description = iocHost.Description;
+                result.Tags = iocHost.Tags;
+
+                context!.SaveChanges();
+            }
+
+            return result!;
         }
     }
 }

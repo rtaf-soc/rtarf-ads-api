@@ -100,5 +100,28 @@ namespace Its.Ads.Api.Services
 
             return result;
         }
+
+        public MVIocHost? UpdateIocHostById(string orgId, string iocHostId, MIocHost iocHost)
+        {
+            var r = new MVIocHost()
+            {
+                Status = "OK",
+                Description = "Success"
+            };
+
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.UpdateIocHostById(iocHostId, iocHost);
+
+            if (result == null)
+            {
+                r.Status = "NOTFOUND";
+                r.Description = $"IOC host ID [{iocHostId}] not found for the organization [{orgId}]";
+
+                return r;
+            }
+
+            r.IocHost = result;
+            return r;
+        }
     }
 }
