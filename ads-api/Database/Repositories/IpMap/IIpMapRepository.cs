@@ -13,5 +13,6 @@ namespace Its.Ads.Api.Database.Repositories
         public MIpMap GetIpMapByCidr(string ipMapCidr);
         public MIpMap? DeleteIpMapById(string IpMapId);
         public bool IsIpMapCidrExist(string ipMapCidr);
+        public MIpMap? UpdateIpMapById(string ipMapId, MIpMap ipMap);
     }
 }

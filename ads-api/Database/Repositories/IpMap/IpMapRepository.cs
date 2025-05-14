@@ -34,6 +34,8 @@ namespace Its.Ads.Api.Database.Repositories
                 var fullTextPd = PredicateBuilder.New<MIpMap>();
                 fullTextPd = fullTextPd.Or(p => p.Cidr!.Contains(param.FullTextSearch));
                 fullTextPd = fullTextPd.Or(p => p.Zone!.Contains(param.FullTextSearch));
+                fullTextPd = fullTextPd.Or(p => p.Tags!.Contains(param.FullTextSearch));
+                fullTextPd = fullTextPd.Or(p => p.Description!.Contains(param.FullTextSearch));
 
                 pd = pd.And(fullTextPd);
             }
@@ -109,6 +111,24 @@ namespace Its.Ads.Api.Database.Repositories
             }
 
             return r;
+        }
+
+        public MIpMap? UpdateIpMapById(string ipMapId, MIpMap ipMap)
+        {
+            Guid id = Guid.Parse(ipMapId);
+            var result = context!.IpMaps!.Where(x => x.OrgId!.Equals(orgId) && x.IpMapId!.Equals(id)).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.Cidr = ipMap.Cidr;
+                result.Zone = ipMap.Zone;
+                result.Description = ipMap.Description;
+                result.Tags = ipMap.Tags;
+
+                context!.SaveChanges();
+            }
+
+            return result!;
         }
     }
 }
