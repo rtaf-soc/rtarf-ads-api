@@ -29,6 +29,7 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MHuntingRule>? HuntingRules { get; set; }
     public DbSet<MCases>? Cases { get; set; }
     public DbSet<MLogAggregateFirewall>? LogAggregatesFirewall { get; set; }
+    public DbSet<MMonitoring>? Monitorings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -47,5 +48,6 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MHuntingRule>();
         modelBuilder.Entity<MCases>();
         modelBuilder.Entity<MLogAggregateFirewall>();
+        modelBuilder.Entity<MHuntingRule>();
     }
 }
