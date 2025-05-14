@@ -100,5 +100,28 @@ namespace Its.Ads.Api.Services
 
             return result;
         }
+
+        public MVIpMap? UpdateIpMapById(string orgId, string ipMapId, MIpMap ipMap)
+        {
+            var r = new MVIpMap()
+            {
+                Status = "OK",
+                Description = "Success"
+            };
+
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.UpdateIpMapById(ipMapId, ipMap);
+
+            if (result == null)
+            {
+                r.Status = "NOTFOUND";
+                r.Description = $"IpMap ID [{ipMapId}] not found for the organization [{orgId}]";
+
+                return r;
+            }
+
+            r.IpMap = result;
+            return r;
+        }
     }
 }

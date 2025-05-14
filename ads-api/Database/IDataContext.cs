@@ -18,5 +18,6 @@ namespace Its.Ads.Api.Database
         public DbSet<MSystemVariable>? SystemVariables { get; set; }
         public DbSet<MLogAggregate>? LogAggregates { get; set; }
         public DbSet<MHuntingRule>? HuntingRules { get; set; }
+        public DbSet<MMonitoring>? Monitorings { get; set; }
     }
 }

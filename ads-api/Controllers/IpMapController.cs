@@ -77,5 +77,14 @@ namespace Its.Ads.Api.Controllers
             var result = svc.GetIpMapCount(id, param);
             return Ok(result);
         }
+
+        [ExcludeFromCodeCoverage]
+        [HttpPost]
+        [Route("org/{id}/action/UpdateIpMapById/{ipMapId}")]
+        public IActionResult UpdateIpMapById(string id, string ipMapId, [FromBody] MIpMap request)
+        {
+            var result = svc.UpdateIpMapById(id, ipMapId, request);
+            return Ok(result);
+        }
     }
 }

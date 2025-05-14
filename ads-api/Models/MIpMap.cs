@@ -15,14 +15,17 @@ namespace Its.Ads.Api.Models
         [Column("org_id")]
         public string? OrgId { get; set; }
 
-        [Column("cidr")] /* SourceIP, DestIP, Domain, Hash, File Name */
+        [Column("cidr")] 
         public string? Cidr { get; set; }
 
-        [Column("zone")] /* Comma separate --> MISP,Blacklist */
+        [Column("zone")]
         public string? Zone { get; set; }
 
-        [Column("description")] /* 1=SrcIP, 2=DestIP, 3=Domain, 4=Hash, 5=FileName */
+        [Column("description")] 
         public string? Description { get; set; }
+
+        [Column("tags")] 
+        public string? Tags { get; set; }
 
         [Column("created_date")]
         public DateTime? CreatedDate { get; set; }

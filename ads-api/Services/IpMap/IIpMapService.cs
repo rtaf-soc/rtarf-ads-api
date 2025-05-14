@@ -12,5 +12,6 @@ namespace Its.Ads.Api.Services
         public IEnumerable<MIpMap> GetIpMaps(string orgId, VMIpMap param);
         public int GetIpMapCount(string orgId, VMIpMap param);
         public MIpMap GetIpMapByCidr(string orgId, string cidr);
+        public MVIpMap? UpdateIpMapById(string orgId, string ipMapId, MIpMap ipMap);
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250513230147_IOCHost_Add_Tags")]
+    partial class IOCHost_Add_Tags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,10 +320,6 @@ namespace ads_api.Migrations
                     b.Property<string>("OrgId")
                         .HasColumnType("text")
                         .HasColumnName("org_id");
-
-                    b.Property<string>("Tags")
-                        .HasColumnType("text")
-                        .HasColumnName("tags");
 
                     b.Property<string>("Zone")
                         .HasColumnType("text")
@@ -653,50 +652,6 @@ namespace ads_api.Migrations
                         .HasDatabaseName("SourceNetwork_Idx11");
 
                     b.ToTable("LogAggregatesFirewall");
-                });
-
-            modelBuilder.Entity("Its.Ads.Api.Models.MMonitoring", b =>
-                {
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("monitoring_id");
-
-                    b.Property<DateTime?>("CheckDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("check_date");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text")
-                        .HasColumnName("name");
-
-                    b.Property<string>("OrgId")
-                        .HasColumnType("text")
-                        .HasColumnName("org_id");
-
-                    b.Property<int?>("SuccessCount")
-                        .HasColumnType("integer")
-                        .HasColumnName("success_check_count");
-
-                    b.Property<int?>("TotalCount")
-                        .HasColumnType("integer")
-                        .HasColumnName("total_check_count");
-
-                    b.Property<int?>("UptimePct")
-                        .HasColumnType("integer")
-                        .HasColumnName("uptime_pct");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex(new[] { "Name" }, "Monitoring_Name_Idx1");
-
-                    b.HasIndex(new[] { "OrgId" }, "Monitoring_OrgId_Idx1");
-
-                    b.ToTable("Monitoring");
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MOrganization", b =>
