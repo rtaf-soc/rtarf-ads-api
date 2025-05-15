@@ -8,7 +8,7 @@ namespace Its.Ads.Api.Models
     [ExcludeFromCodeCoverage]
     [Table("Monitoring")]
     [Index(nameof(OrgId), IsUnique = false, Name = "Monitoring_OrgId_Idx1")]
-    [Index(nameof(Name), IsUnique = false, Name = "Monitoring_Name_Idx1")]
+    [Index(nameof(Name), IsUnique = true, Name = "Monitoring_Name_Idx2")]
 
     public class MMonitoring
     {
