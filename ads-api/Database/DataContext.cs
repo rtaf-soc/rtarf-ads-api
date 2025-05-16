@@ -30,6 +30,7 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MCases>? Cases { get; set; }
     public DbSet<MLogAggregateFirewall>? LogAggregatesFirewall { get; set; }
     public DbSet<MMonitoring>? Monitorings { get; set; }
+    public DbSet<MCsMachineStat>? CsMachineStats { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,5 +50,6 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MCases>();
         modelBuilder.Entity<MLogAggregateFirewall>();
         modelBuilder.Entity<MHuntingRule>();
+        modelBuilder.Entity<MCsMachineStat>();
     }
 }

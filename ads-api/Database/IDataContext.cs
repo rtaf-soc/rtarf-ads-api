@@ -19,5 +19,6 @@ namespace Its.Ads.Api.Database
         public DbSet<MLogAggregate>? LogAggregates { get; set; }
         public DbSet<MHuntingRule>? HuntingRules { get; set; }
         public DbSet<MMonitoring>? Monitorings { get; set; }
+        public DbSet<MCsMachineStat>? CsMachineStats { get; set; }
     }
 }
