@@ -20,5 +20,6 @@ namespace Its.Ads.Api.Database
         public DbSet<MHuntingRule>? HuntingRules { get; set; }
         public DbSet<MMonitoring>? Monitorings { get; set; }
         public DbSet<MCsMachineStat>? CsMachineStats { get; set; }
+        public DbSet<MDevice>? Devices { get; set; }
     }
 }
