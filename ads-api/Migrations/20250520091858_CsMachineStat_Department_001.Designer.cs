@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250520091858_CsMachineStat_Department_001")]
+    partial class CsMachineStat_Department_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,8 +231,6 @@ namespace ads_api.Migrations
                         .HasColumnName("cs_event_count");
 
                     b.HasKey("Id");
-
-                    b.HasIndex(new[] { "Department" }, "MachineStat_Department_Idx1");
 
                     b.HasIndex(new[] { "Name" }, "MachineStat_Name_Idx1")
                         .IsUnique();

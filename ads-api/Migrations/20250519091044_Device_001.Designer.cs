@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250519091044_Device_001")]
+    partial class Device_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -207,10 +210,6 @@ namespace ads_api.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date");
 
-                    b.Property<string>("Department")
-                        .HasColumnType("text")
-                        .HasColumnName("department_name");
-
                     b.Property<DateTime?>("LastCsEventDate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_cs_event_date");
@@ -228,8 +227,6 @@ namespace ads_api.Migrations
                         .HasColumnName("cs_event_count");
 
                     b.HasKey("Id");
-
-                    b.HasIndex(new[] { "Department" }, "MachineStat_Department_Idx1");
 
                     b.HasIndex(new[] { "Name" }, "MachineStat_Name_Idx1")
                         .IsUnique();
