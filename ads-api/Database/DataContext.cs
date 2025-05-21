@@ -32,6 +32,7 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MMonitoring>? Monitorings { get; set; }
     public DbSet<MCsMachineStat>? CsMachineStats { get; set; }
     public DbSet<MDevice>? Devices { get; set; }
+    public DbSet<MDepartment>? Departments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -53,5 +54,6 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MHuntingRule>();
         modelBuilder.Entity<MCsMachineStat>();
         modelBuilder.Entity<MDevice>();
+        modelBuilder.Entity<MDepartment>();
     }
 }
