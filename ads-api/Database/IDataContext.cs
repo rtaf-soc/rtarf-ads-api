@@ -22,5 +22,7 @@ namespace Its.Ads.Api.Database
         public DbSet<MCsMachineStat>? CsMachineStats { get; set; }
         public DbSet<MDevice>? Devices { get; set; }
         public DbSet<MDepartment>? Departments { get; set; }
+        public DbSet<MThreat>? Threats { get; set; }
+        public DbSet<MNewsFeed>? NewsFeed { get; set; }
     }
 }
