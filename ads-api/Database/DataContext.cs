@@ -33,6 +33,8 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MCsMachineStat>? CsMachineStats { get; set; }
     public DbSet<MDevice>? Devices { get; set; }
     public DbSet<MDepartment>? Departments { get; set; }
+    public DbSet<MThreat>? Threats { get; set; }
+    public DbSet<MNewsFeed>? NewsFeed { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -55,5 +57,7 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MCsMachineStat>();
         modelBuilder.Entity<MDevice>();
         modelBuilder.Entity<MDepartment>();
+        modelBuilder.Entity<MThreat>();
+        modelBuilder.Entity<MNewsFeed>();
     }
 }
