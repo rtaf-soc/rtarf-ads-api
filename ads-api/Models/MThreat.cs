@@ -22,6 +22,9 @@ namespace Its.Ads.Api.Models
         [Column("event_date")]
         public DateTime? EventDate { get; set; }
 
+       [Column("event_date_str")]
+        public string? EventDateStr { get; set; }
+
         [Column("incident_type")]
         public string? IncidentType { get; set; }
 

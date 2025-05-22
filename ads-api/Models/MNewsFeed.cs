@@ -22,6 +22,9 @@ namespace Its.Ads.Api.Models
         [Column("feed_date")]
         public DateTime? FeedDate { get; set; }
 
+       [Column("feed_date_str")]
+        public string? FeedDateStr { get; set; }
+
         [Column("feed_type")]
         public string? FeedType { get; set; }
 
