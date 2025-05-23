@@ -40,7 +40,7 @@ namespace Its.Ads.Api.Controllers
         }
 
         [ExcludeFromCodeCoverage]
-        [HttpDelete]
+        [HttpPost]
         [Route("org/{id}/action/UpdateSystemVariableById/{systemVariableId}")]
         public IActionResult UpdateSystemVariableById(string id, string systemVariableId, [FromBody] MSystemVariable request)
         {
