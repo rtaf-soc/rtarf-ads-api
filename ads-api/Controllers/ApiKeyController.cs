@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Its.Ads.Api.Models;
 using Its.Ads.Api.Services;
+using Its.Ads.Api.ViewsModels;
 
 namespace Its.Ads.Api.Controllers
 {
@@ -51,10 +52,36 @@ namespace Its.Ads.Api.Controllers
         // Use POST method, in the future we might send the body
         [HttpPost]
         [Route("org/{id}/action/GetApiKeys")]
-        public IActionResult GetApiKeys(string id)
+        public IActionResult GetApiKeys(string id, [FromBody] VMApiKey param)
         {
-            var result = svc.GetApiKeys(id);
+            var result = svc.GetApiKeys(id, param);
             return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("org/{id}/action/GetApiKeyCount")]
+        public IActionResult GetApiKeyCount(string id, [FromBody] VMApiKey param)
+        {
+            var result = svc.GetApiKeyCount(id, param);
+            return Ok(result);
+        }
+
+        [ExcludeFromCodeCoverage]
+        [HttpPost]
+        [Route("org/{id}/action/UpdateApiKeyById/{keyId}")]
+        public IActionResult UpdateApiKeyById(string id, string keyId, [FromBody] MApiKey request)
+        {
+            var result = svc.UpdateApiKeyById(id, keyId, request);
+            return Ok(result);
+        }
+
+        [ExcludeFromCodeCoverage]
+        [HttpGet]
+        [Route("org/{id}/action/GetApiKeyById/{keyId}")]
+        public MApiKey GetApiKeyById(string id, string keyId)
+        {
+            var result = svc.GetApiKeyById(id, keyId);
+            return result;
         }
     }
 }

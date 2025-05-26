@@ -2,6 +2,7 @@ using Its.Ads.Api.Models;
 using Its.Ads.Api.ModelsViews;
 using Its.Ads.Api.Database.Repositories;
 using Its.Ads.Api.Utils;
+using Its.Ads.Api.ViewsModels;
 
 namespace Its.Ads.Api.Services
 {
@@ -42,13 +43,13 @@ namespace Its.Ads.Api.Services
                 status = "NOTFOUND";
                 description = $"API key not found for the organization [{orgId}]";
             }
-            else if ((m.KeyExpiredDate != null) && (DateTime.Compare(compareDate, (DateTime) m.KeyExpiredDate!) > 0))
+            else if ((m.KeyExpiredDate != null) && (DateTime.Compare(compareDate, (DateTime)m.KeyExpiredDate!) > 0))
             {
                 status = "EXPIRED";
                 description = $"API key for the organization is expire [{orgId}] since [{m.KeyExpiredDate}]";
             }
 
-            var mv = new MVApiKey() 
+            var mv = new MVApiKey()
             {
                 ApiKey = m,
                 Status = status,
@@ -113,12 +114,51 @@ namespace Its.Ads.Api.Services
             return r;
         }
 
-        public IEnumerable<MApiKey> GetApiKeys(string orgId)
+        public IEnumerable<MApiKey> GetApiKeys(string orgId, VMApiKey param)
         {
             repository!.SetCustomOrgId(orgId);
-            var result = repository!.GetApiKeys();
+            var result = repository!.GetApiKeys(param);
 
             return result;
+        }
+
+        public int GetApiKeyCount(string orgId, VMApiKey param)
+        {
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.GetApiKeyCount(param);
+
+            return result;
+        }
+
+        public MVApiKey? UpdateApiKeyById(string orgId, string keyId, MApiKey apiKey)
+        {
+            var r = new MVApiKey()
+            {
+                Status = "OK",
+                Description = "Success"
+            };
+
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.UpdateApiKeyById(keyId, apiKey);
+
+            if (result == null)
+            {
+                r.Status = "NOTFOUND";
+                r.Description = $"Key ID [{keyId}] not found for the organization [{orgId}]";
+
+                return r;
+            }
+
+            r.ApiKey = result;
+            return r;
+        }
+
+        public MApiKey GetApiKeyById(string orgId, string keyId)
+        {
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.GetApiKeyById(keyId);
+
+            return result.Result;
         }
     }
 }

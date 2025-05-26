@@ -1,5 +1,7 @@
 using Its.Ads.Api.Models;
+using Its.Ads.Api.ViewsModels;
 using Microsoft.EntityFrameworkCore;
+using LinqKit;
 
 namespace Its.Ads.Api.Database.Repositories
 {
@@ -42,10 +44,82 @@ namespace Its.Ads.Api.Database.Repositories
             return r;
         }
 
-        public IEnumerable<MApiKey> GetApiKeys()
+        private ExpressionStarter<MApiKey> ApiKeyPredicate(VMApiKey param)
         {
-            var arr = context!.ApiKeys!.Where(x => x.OrgId!.Equals(orgId)).ToList();
+            var pd = PredicateBuilder.New<MApiKey>();
+
+            pd = pd.And(p => p.OrgId!.Equals(orgId));
+
+            if ((param.FullTextSearch != "") && (param.FullTextSearch != null))
+            {
+                var fullTextPd = PredicateBuilder.New<MApiKey>();
+                fullTextPd = fullTextPd.Or(p => p.KeyDescription!.Contains(param.FullTextSearch));
+                fullTextPd = fullTextPd.Or(p => p.RolesList!.Contains(param.FullTextSearch));
+
+                pd = pd.And(fullTextPd);
+            }
+
+            return pd;
+        }
+
+        public IEnumerable<MApiKey> GetApiKeys(VMApiKey param)
+        {
+            var limit = 0;
+            var offset = 0;
+
+            //Param will never be null
+            if (param.Offset > 0)
+            {
+                //Convert to zero base
+                offset = param.Offset-1;
+            }
+
+            if (param.Limit > 0)
+            {
+                limit = param.Limit;
+            }
+
+            var predicate = ApiKeyPredicate(param!);
+            var arr = context!.ApiKeys!.Where(predicate)
+                .OrderByDescending(e => e.KeyCreatedDate)
+                .Skip(offset)
+                .Take(limit)
+                .ToList();
+
             return arr;
+        }
+
+        public Task<MApiKey> GetApiKeyById(string keyId)
+        {
+            Guid id = Guid.Parse(keyId);
+            var result = context!.ApiKeys!.Where(x => x.OrgId!.Equals(orgId) && x.KeyId!.Equals(id)).FirstOrDefaultAsync();
+
+            return result!;
+        }
+
+        public int GetApiKeyCount(VMApiKey param)
+        {
+            var predicate = ApiKeyPredicate(param);
+            var cnt = context!.ApiKeys!.Where(predicate).Count();
+
+            return cnt;
+        }
+
+        public MApiKey? UpdateApiKeyById(string keyId, MApiKey apiKey)
+        {
+            Guid id = Guid.Parse(keyId);
+            var result = context!.ApiKeys!.Where(x => x.OrgId!.Equals(orgId) && x.KeyId!.Equals(id)).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.KeyDescription = apiKey.KeyDescription;
+                result.RolesList = apiKey.RolesList;
+                result.KeyExpiredDate = apiKey.KeyExpiredDate;
+
+                context!.SaveChanges();
+            }
+
+            return result!;
         }
     }
 }
