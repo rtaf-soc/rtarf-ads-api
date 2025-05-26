@@ -1,4 +1,5 @@
 using Its.Ads.Api.Models;
+using Its.Ads.Api.ViewsModels;
 
 namespace Its.Ads.Api.Database.Repositories
 {
@@ -8,6 +9,10 @@ namespace Its.Ads.Api.Database.Repositories
         public Task<MApiKey> GetApiKey(string apiKey);
         public MApiKey AddApiKey(MApiKey apiKey);
         public MApiKey? DeleteApiKeyById(string keyId);
-        public IEnumerable<MApiKey> GetApiKeys();
+        public IEnumerable<MApiKey> GetApiKeys(VMApiKey param);
+
+        public Task<MApiKey> GetApiKeyById(string keyId);
+        public int GetApiKeyCount(VMApiKey param);
+        public MApiKey? UpdateApiKeyById(string keyId, MApiKey apiKey);
     }
 }
