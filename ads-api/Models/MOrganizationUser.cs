@@ -30,6 +30,9 @@ namespace Its.Ads.Api.Models
         [Column("roles_list")]
         public string? RolesList { get; set; }
 
+        [NotMapped]
+        public string? UserEmail { get; set; }
+
         public MOrganizationUser()
         {
             OrgUserId = Guid.NewGuid();

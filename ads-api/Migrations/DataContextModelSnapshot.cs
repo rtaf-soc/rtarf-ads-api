@@ -60,7 +60,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex("OrgId");
 
-                    b.ToTable("ApiKeys");
+                    b.ToTable("ApiKeys", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MBlacklist", b =>
@@ -92,7 +92,7 @@ namespace ads_api.Migrations
 
                     b.HasKey("BlacklistId");
 
-                    b.ToTable("Blacklists");
+                    b.ToTable("Blacklists", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MCases", b =>
@@ -193,7 +193,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex(new[] { "CaseStatus" }, "Case_Status_Idx1");
 
-                    b.ToTable("Cases");
+                    b.ToTable("Cases", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MCsMachineStat", b =>
@@ -236,7 +236,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex(new[] { "OrgId" }, "MachineStat_OrgId_Idx1");
 
-                    b.ToTable("CsMachineStat");
+                    b.ToTable("CsMachineStat", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MDepartment", b =>
@@ -273,7 +273,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex("OrgId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MDevice", b =>
@@ -326,7 +326,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex("OrgId");
 
-                    b.ToTable("Devices");
+                    b.ToTable("Devices", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MHuntingRule", b =>
@@ -377,7 +377,7 @@ namespace ads_api.Migrations
                     b.HasIndex("RuleName")
                         .IsUnique();
 
-                    b.ToTable("HuntingRules");
+                    b.ToTable("HuntingRules", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MIocHost", b =>
@@ -425,7 +425,7 @@ namespace ads_api.Migrations
 
                     b.HasKey("IocHostId");
 
-                    b.ToTable("MIocHosts");
+                    b.ToTable("MIocHosts", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MIpMap", b =>
@@ -461,7 +461,7 @@ namespace ads_api.Migrations
 
                     b.HasKey("IpMapId");
 
-                    b.ToTable("IpMaps");
+                    b.ToTable("IpMaps", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MLogAggregate", b =>
@@ -682,7 +682,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex(new[] { "SourceNetwork" }, "SourceNetwork_Idx1");
 
-                    b.ToTable("LogAggregates");
+                    b.ToTable("LogAggregates", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MLogAggregateFirewall", b =>
@@ -785,7 +785,7 @@ namespace ads_api.Migrations
                     b.HasIndex(new[] { "SourceNetwork" }, "SourceNetwork_Idx1")
                         .HasDatabaseName("SourceNetwork_Idx11");
 
-                    b.ToTable("LogAggregatesFirewall");
+                    b.ToTable("LogAggregatesFirewall", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MMonitoring", b =>
@@ -830,7 +830,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex(new[] { "OrgId" }, "Monitoring_OrgId_Idx1");
 
-                    b.ToTable("Monitoring");
+                    b.ToTable("Monitoring", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MNewsFeed", b =>
@@ -887,7 +887,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex("OrgId");
 
-                    b.ToTable("NewsFeed");
+                    b.ToTable("NewsFeed", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MOrganization", b =>
@@ -918,7 +918,7 @@ namespace ads_api.Migrations
                     b.HasIndex("OrgCustomId")
                         .IsUnique();
 
-                    b.ToTable("Organizations");
+                    b.ToTable("Organizations", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MOrganizationUser", b =>
@@ -955,7 +955,7 @@ namespace ads_api.Migrations
                     b.HasIndex(new[] { "OrgCustomId", "UserId" }, "OrgUser_Unique1")
                         .IsUnique();
 
-                    b.ToTable("OrganizationsUsers");
+                    b.ToTable("OrganizationsUsers", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MRole", b =>
@@ -991,7 +991,7 @@ namespace ads_api.Migrations
                     b.HasIndex("RoleName")
                         .IsUnique();
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MSystemVariable", b =>
@@ -1023,7 +1023,7 @@ namespace ads_api.Migrations
 
                     b.HasKey("VariableId");
 
-                    b.ToTable("MSystemVariables");
+                    b.ToTable("MSystemVariables", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MThreat", b =>
@@ -1084,7 +1084,7 @@ namespace ads_api.Migrations
 
                     b.HasIndex("OrgId");
 
-                    b.ToTable("Threats");
+                    b.ToTable("Threats", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MUser", b =>
@@ -1114,7 +1114,7 @@ namespace ads_api.Migrations
                     b.HasIndex("UserName")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MWorkFlow", b =>
@@ -1161,7 +1161,7 @@ namespace ads_api.Migrations
                     b.HasIndex("WorkflowName")
                         .IsUnique();
 
-                    b.ToTable("Workflows");
+                    b.ToTable("Workflows", (string)null);
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MWorkflowTemplate", b =>
@@ -1200,7 +1200,7 @@ namespace ads_api.Migrations
                     b.HasIndex("TemplateName")
                         .IsUnique();
 
-                    b.ToTable("WorkflowTemplates");
+                    b.ToTable("WorkflowTemplates", (string)null);
                 });
 #pragma warning restore 612, 618
         }
