@@ -9,10 +9,12 @@ namespace Its.Ads.Api.Services
     public class OrganizationUserService : BaseService, IOrganizationUserService
     {
         private readonly IOrganizationUserRepository? repository = null;
+        private readonly IUserRepository? userRepository = null;
 
-        public OrganizationUserService(IOrganizationUserRepository repo) : base()
+        public OrganizationUserService(IOrganizationUserRepository repo, IUserRepository userRepo) : base()
         {
             repository = repo;
+            userRepository = userRepo;
         }
 
         public IEnumerable<MOrganizationUser> GetUsers(string orgId, VMOrganizationUser param)
@@ -65,6 +67,14 @@ namespace Its.Ads.Api.Services
             }
 
             return r;
+        }
+
+        public MOrganizationUser GetUserById(string orgId, string userId)
+        {
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.GetUserById(userId);
+
+            return result.Result;
         }
 
         public int GetUserCount(string orgId, VMOrganizationUser param)
