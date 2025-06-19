@@ -48,6 +48,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<ISystemVariableService, SystemVariableService>();
             builder.Services.AddScoped<IHuntingRuleService, HuntingRuleService>();
             builder.Services.AddScoped<IDeviceService, DeviceService>();
+            builder.Services.AddScoped<INoteService, NoteService>();
             builder.Services.AddScoped<IOrganizationUserService, OrganizationUserService>();
 
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
@@ -61,6 +62,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<ISystemVariableRepository, SystemVariableRepository>();
             builder.Services.AddScoped<IHuntingRuleRepository, HuntingRuleRepository>();
             builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
+            builder.Services.AddScoped<INoteRepository, NoteRepository>();
             builder.Services.AddScoped<IOrganizationUserRepository, OrganizationUserRepository>();
 
             builder.Services.AddTransient<IAuthorizationHandler, GenericRbacHandler>();

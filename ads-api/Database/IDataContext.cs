@@ -24,5 +24,6 @@ namespace Its.Ads.Api.Database
         public DbSet<MDepartment>? Departments { get; set; }
         public DbSet<MThreat>? Threats { get; set; }
         public DbSet<MNewsFeed>? NewsFeed { get; set; }
+        public DbSet<MNote>? Notes { get; set; }
     }
 }

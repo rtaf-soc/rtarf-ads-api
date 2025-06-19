@@ -35,6 +35,7 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MDepartment>? Departments { get; set; }
     public DbSet<MThreat>? Threats { get; set; }
     public DbSet<MNewsFeed>? NewsFeed { get; set; }
+    public DbSet<MNote>? Notes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -59,5 +60,6 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MDepartment>();
         modelBuilder.Entity<MThreat>();
         modelBuilder.Entity<MNewsFeed>();
+        modelBuilder.Entity<MNote>();
     }
 }
