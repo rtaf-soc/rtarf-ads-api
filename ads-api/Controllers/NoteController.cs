@@ -32,19 +32,19 @@ namespace Its.Ads.Api.Controllers
 
         [ExcludeFromCodeCoverage]
         [HttpDelete]
-        [Route("org/{id}/action/DeleteNoteById/{deviceId}")]
-        public IActionResult DeleteNoteById(string id, string deviceId)
+        [Route("org/{id}/action/DeleteNoteById/{noteId}")]
+        public IActionResult DeleteNoteById(string id, string noteId)
         {
-            var result = svc.DeleteNoteById(id, deviceId);
+            var result = svc.DeleteNoteById(id, noteId);
             return Ok(result);
         }
 
         [ExcludeFromCodeCoverage]
         [HttpGet]
-        [Route("org/{id}/action/GetNoteById/{deviceId}")]
-        public MNote GetNoteById(string id, string deviceId)
+        [Route("org/{id}/action/GetNoteById/{noteId}")]
+        public MNote GetNoteById(string id, string noteId)
         {
-            var result = svc.GetNoteById(id, deviceId);
+            var result = svc.GetNoteById(id, noteId);
             return result;
         }
 
@@ -71,10 +71,10 @@ namespace Its.Ads.Api.Controllers
 
         [ExcludeFromCodeCoverage]
         [HttpPost]
-        [Route("org/{id}/action/UpdateNoteById/{deviceId}")]
-        public IActionResult UpdateNoteById(string id, string deviceId, [FromBody] MNote request)
+        [Route("org/{id}/action/UpdateNoteById/{noteId}")]
+        public IActionResult UpdateNoteById(string id, string noteId, [FromBody] MNote request)
         {
-            var result = svc.UpdateNoteById(id, deviceId, request);
+            var result = svc.UpdateNoteById(id, noteId, request);
             return Ok(result);
         }
     }
