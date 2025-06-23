@@ -114,8 +114,19 @@ namespace Its.Ads.Api.Database.Repositories
 
         public MSystemVariable? UpdateSystemVariableById(string systemVariableId, MSystemVariable systemVariable)
         {
-            //TODO : Implement this
-            return null;
+            Guid id = Guid.Parse(systemVariableId);
+            var result = context!.SystemVariables!.Where(x => x.OrgId!.Equals(orgId) && x.VariableId!.Equals(id)).FirstOrDefault();
+
+            if (result != null)
+            {
+                //Not allow to update variable name
+                result.Description = systemVariable.Description;
+                result.VariableValue = systemVariable.VariableValue;
+
+                context!.SaveChanges();
+            }
+
+            return result!;
         }
     }
 }
