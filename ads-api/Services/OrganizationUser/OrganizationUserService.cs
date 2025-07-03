@@ -35,9 +35,10 @@ namespace Its.Ads.Api.Services
                 UserName = user.UserName,
                 UserEmail = user.UserEmail,
             };
+            
             var userAdded = userRepository!.AddUser(u);
-
             user.UserId = userAdded.UserId.ToString();
+
             var result = repository!.AddUser(user);
 
             var r = new MVOrganizationUser();
