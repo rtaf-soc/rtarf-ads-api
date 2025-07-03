@@ -15,7 +15,22 @@ namespace Its.Ads.Api.Database.Repositories
         public Task<MOrganizationUser> GetUserById(string orgUserId)
         {
             Guid id = Guid.Parse(orgUserId);
-            var result = context!.OrganizationUsers!.Where(x => x.OrgCustomId!.Equals(orgId) && x.OrgUserId!.Equals(id)).FirstOrDefaultAsync();
+
+            var result = context!.OrganizationUsers!
+                .Join(context!.Users!,
+                    ou => ou.UserName,
+                    u => u.UserName,
+                    (ou, u) => new MOrganizationUser
+                    {
+                        OrgUserId = ou.OrgUserId,
+                        OrgCustomId = ou.OrgCustomId,
+                        UserId = ou.UserId,
+                        UserName = ou.UserName,
+                        RolesList = ou.RolesList,
+                        CreatedDate = ou.CreatedDate,
+                        UserEmail = u.UserEmail
+                    })
+                .Where(x => x.OrgCustomId!.Equals(orgId) && x.OrgUserId!.Equals(id)).FirstOrDefaultAsync();
 
             return result!;
         }
@@ -64,7 +79,24 @@ namespace Its.Ads.Api.Database.Repositories
             }
 
             var predicate = UserPredicate(param!);
-            var arr = context!.OrganizationUsers!.Where(predicate)
+
+            var arr = context!.OrganizationUsers!
+                .Join(context!.Users!,
+                    ou => ou.UserName,
+                    u => u.UserName,
+                    (ou, u) => new MOrganizationUser
+                    {
+                        OrgUserId = ou.OrgUserId,
+                        OrgCustomId = ou.OrgCustomId,
+                        UserId = ou.UserId,
+                        UserName = ou.UserName,
+                        RolesList = ou.RolesList,
+                        CreatedDate = ou.CreatedDate,
+                        UserEmail = u.UserEmail
+                    })
+                .AsQueryable()
+                .AsExpandable()
+                .Where(predicate)
                 .OrderByDescending(e => e.CreatedDate)
                 .Skip(offset)
                 .Take(limit)

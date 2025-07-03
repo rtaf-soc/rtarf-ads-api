@@ -24,7 +24,7 @@ namespace Prom.LPR.Api.Controllers
         [ExcludeFromCodeCoverage]
         [HttpPost]
         [Route("org/{id}/action/AddUser")]
-        public MVOrganizationUser? AddDevice(string id, [FromBody] MOrganizationUser request)
+        public MVOrganizationUser? AddUser(string id, [FromBody] MOrganizationUser request)
         {
             var result = svc.AddUser(id, request);
             return result;

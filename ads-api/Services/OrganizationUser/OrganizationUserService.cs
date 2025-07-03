@@ -28,11 +28,20 @@ namespace Its.Ads.Api.Services
         public MVOrganizationUser? AddUser(string orgId, MOrganizationUser user)
         {
             repository!.SetCustomOrgId(orgId);
+            userRepository!.SetCustomOrgId(orgId);
 
-            var r = new MVOrganizationUser();
+            var u = new MUser()
+            {
+                UserName = user.UserName,
+                UserEmail = user.UserEmail,
+            };
+            
+            var userAdded = userRepository!.AddUser(u);
+            user.UserId = userAdded.UserId.ToString();
 
             var result = repository!.AddUser(user);
 
+            var r = new MVOrganizationUser();
             r.Status = "OK";
             r.Description = "Success";
             r.OrgUser = result;
@@ -99,7 +108,7 @@ namespace Its.Ads.Api.Services
             if (result == null)
             {
                 r.Status = "NOTFOUND";
-                r.Description = $"User ID [{user}] not found for the organization [{orgId}]";
+                r.Description = $"User ID [{userId}] not found for the organization [{orgId}]";
 
                 return r;
             }
