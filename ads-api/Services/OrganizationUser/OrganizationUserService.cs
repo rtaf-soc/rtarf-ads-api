@@ -108,7 +108,7 @@ namespace Its.Ads.Api.Services
             if (result == null)
             {
                 r.Status = "NOTFOUND";
-                r.Description = $"User ID [{user}] not found for the organization [{orgId}]";
+                r.Description = $"User ID [{userId}] not found for the organization [{orgId}]";
 
                 return r;
             }
