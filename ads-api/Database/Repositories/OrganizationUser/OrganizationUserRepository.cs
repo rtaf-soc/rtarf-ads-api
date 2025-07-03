@@ -30,8 +30,6 @@ namespace Its.Ads.Api.Database.Repositories
                         CreatedDate = ou.CreatedDate,
                         UserEmail = u.UserEmail
                     })
-                .AsQueryable()
-                .AsExpandable()
                 .Where(x => x.OrgCustomId!.Equals(orgId) && x.OrgUserId!.Equals(id)).FirstOrDefaultAsync();
 
             return result!;
