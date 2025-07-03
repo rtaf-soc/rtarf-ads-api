@@ -64,7 +64,24 @@ namespace Its.Ads.Api.Database.Repositories
             }
 
             var predicate = UserPredicate(param!);
-            var arr = context!.OrganizationUsers!.Where(predicate)
+
+            var arr = context!.OrganizationUsers!
+                .Join(context!.Users!,
+                    ou => ou.UserName,
+                    u => u.UserName,
+                    (ou, u) => new MOrganizationUser
+                    {
+                        OrgUserId = ou.OrgUserId,
+                        OrgCustomId = ou.OrgCustomId,
+                        UserId = ou.UserId,
+                        UserName = ou.UserName,
+                        RolesList = ou.RolesList,
+                        CreatedDate = ou.CreatedDate,
+                        UserEmail = u.UserEmail
+                    })
+                .AsQueryable()
+                .AsExpandable()
+                .Where(predicate)
                 .OrderByDescending(e => e.CreatedDate)
                 .Skip(offset)
                 .Take(limit)
