@@ -79,6 +79,27 @@ namespace Its.Ads.Api.Models
         [Column("tags")]
         public string? Tags { get; set; }
 
+        [Column("flags")]
+        public string? Flag { get; set; }
+
+        [Column("custom_fields")]
+        public string? CustomFields { get; set; }
+
+        [Column("created_by")]
+        public string? CreatedBy { get; set; }
+
+        [Column("metrics")]
+        public string? Metrics { get; set; }
+
+        [Column("end_date")]
+        public string? EndDate { get; set; }
+
+        [Column("merge_into")]
+        public string? MergeInto { get; set; }
+
+        [Column("merge_from")]
+        public string? MergeFrom { get; set; }
+
         public MCases()
         {
             CaseId = Guid.NewGuid();
