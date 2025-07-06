@@ -91,8 +91,8 @@ namespace Its.Ads.Api.Models
         [Column("metrics")]
         public string? Metrics { get; set; }
 
-        [Column("end_date")]
-        public string? EndDate { get; set; }
+        [Column("case_end_date")]
+        public DateTime? CaseEndDate { get; set; }
 
         [Column("merge_into")]
         public string? MergeInto { get; set; }
