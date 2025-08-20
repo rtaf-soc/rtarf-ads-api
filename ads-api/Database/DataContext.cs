@@ -39,6 +39,9 @@ public class DataContext : DbContext, IDataContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //Enabled vector
+        modelBuilder.HasPostgresExtension("vector");
+
         modelBuilder.Entity<MOrganization>();
         modelBuilder.Entity<MApiKey>();
         modelBuilder.Entity<MRole>();

@@ -33,7 +33,11 @@ namespace Its.Ads.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connStr, o => o.CommandTimeout(1200)));
+            builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connStr, o =>
+            {
+                o.CommandTimeout(1200);
+                o.UseVector();
+            }));
             builder.Services.AddTransient<DataSeeder>();
 
             builder.Services.AddScoped<IDataContext, DataContext>();
