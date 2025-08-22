@@ -3,18 +3,20 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Pgvector;
 
 #nullable disable
 
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250820234504_EnabledVector_001")]
+    partial class EnabledVector_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1092,52 +1094,6 @@ namespace ads_api.Migrations
                     b.HasKey("VariableId");
 
                     b.ToTable("MSystemVariables");
-                });
-
-            modelBuilder.Entity("Its.Ads.Api.Models.MTextEmbedding", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("embedding_id");
-
-                    b.Property<string>("Category")
-                        .HasColumnType("text")
-                        .HasColumnName("category");
-
-                    b.Property<int?>("ChunkNo")
-                        .HasColumnType("integer")
-                        .HasColumnName("chunk_no");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_date");
-
-                    b.Property<Vector>("EmbeddingBgeM3")
-                        .HasColumnType("vector(1024)")
-                        .HasColumnName("embedding_bge_m3");
-
-                    b.Property<string>("NormalizedText")
-                        .HasColumnType("text")
-                        .HasColumnName("normalized_text");
-
-                    b.Property<string>("OrgId")
-                        .HasColumnType("text")
-                        .HasColumnName("org_id");
-
-                    b.Property<string>("RefNo")
-                        .HasColumnType("text")
-                        .HasColumnName("ref_no");
-
-                    b.Property<string>("Tags")
-                        .HasColumnType("text")
-                        .HasColumnName("tags");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrgId");
-
-                    b.ToTable("TextEmbedding");
                 });
 
             modelBuilder.Entity("Its.Ads.Api.Models.MThreat", b =>

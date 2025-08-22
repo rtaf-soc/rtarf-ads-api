@@ -36,9 +36,13 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MThreat>? Threats { get; set; }
     public DbSet<MNewsFeed>? NewsFeed { get; set; }
     public DbSet<MNote>? Notes { get; set; }
+    public DbSet<MTextEmbedding>? TextEmbeddings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //Enabled vector
+        modelBuilder.HasPostgresExtension("vector");
+
         modelBuilder.Entity<MOrganization>();
         modelBuilder.Entity<MApiKey>();
         modelBuilder.Entity<MRole>();
@@ -61,5 +65,9 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MThreat>();
         modelBuilder.Entity<MNewsFeed>();
         modelBuilder.Entity<MNote>();
+
+        modelBuilder.Entity<MTextEmbedding>()
+            .Property(d => d.EmbeddingBgeM3)
+            .HasColumnType("vector(1024)");
     }
 }
