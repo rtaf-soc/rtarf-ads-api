@@ -31,6 +31,13 @@ namespace Its.Ads.Api.Services
             return result;
         }
 
+        public Task<MHuntingRule> GetHuntingRuleLuceneQueryById(string orgId, string ruleId)
+        {
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.GetHuntingRuleLuceneQueryById(ruleId);
+            return result;
+        }
+
         public MVHuntingRule? AddHuntingRule(string orgId, MHuntingRule huntingRule)
         {
             repository!.SetCustomOrgId(orgId);

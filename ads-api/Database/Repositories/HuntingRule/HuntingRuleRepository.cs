@@ -20,6 +20,14 @@ namespace Its.Ads.Api.Database.Repositories
             return result!;
         }
 
+        public Task<MHuntingRule> GetHuntingRuleLuceneQueryById(string ruleId)
+        {
+            Guid id = Guid.Parse(ruleId);
+            var result = context!.HuntingRules!.Where(x => x.OrgId!.Equals(orgId) && x.RuleId!.Equals(id)).FirstOrDefaultAsync();
+
+            return result!;
+        }
+
         public MHuntingRule AddHuntingRule(MHuntingRule huntingRule)
         {
             huntingRule.RuleId = Guid.NewGuid();

@@ -7,6 +7,7 @@ namespace Its.Ads.Api.Database.Repositories
     {
         public void SetCustomOrgId(string customOrgId);
         public Task<MHuntingRule> GetHuntingRule(string ruleId);
+        public Task<MHuntingRule> GetHuntingRuleLuceneQueryById(string ruleId);
         public Task<MHuntingRule> GetHuntingRuleByName(string ruleName);
         public MHuntingRule AddHuntingRule(MHuntingRule huntingRule);
         public MHuntingRule? DeleteHuntingRuleById(string ruleId);

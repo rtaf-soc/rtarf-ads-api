@@ -40,6 +40,9 @@ namespace Its.Ads.Api.Models
         [Column("tags")]
         public string? Tags { get; set; }
 
+        [Column("lucene_query")]
+        public string? LuceneQuery { get; set; }
+
         public MHuntingRule()
         {
             RuleId = Guid.NewGuid();

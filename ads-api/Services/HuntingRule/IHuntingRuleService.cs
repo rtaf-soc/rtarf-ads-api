@@ -6,6 +6,7 @@ namespace Its.Ads.Api.Services
 {
     public interface IHuntingRuleService
     {
+        public Task<MHuntingRule> GetHuntingRuleLuceneQueryById(string orgId, string ruleId);
         public Task<MHuntingRule> GetHuntingRuleById(string orgId, string ruleId);
         public MVHuntingRule? AddHuntingRule(string orgId, MHuntingRule huntingRule);
         public MVHuntingRule? DeleteHuntingRuleById(string orgId, string ruleId);
