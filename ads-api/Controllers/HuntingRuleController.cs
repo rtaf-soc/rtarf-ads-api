@@ -59,6 +59,17 @@ namespace Its.Ads.Api.Controllers
             return Ok(result.Result);
         }
 
+        [ExcludeFromCodeCoverage]
+        [HttpGet]
+        [Route("org/{id}/action/GetHuntingRuleLuceneQueryById/{ruleId}")]
+        public IActionResult GetHuntingRuleLuceneQueryById(string id, string ruleId)
+        {
+//Console.WriteLine("DEBUG_1");
+            var result = svc.GetHuntingRuleLuceneQueryById(id, ruleId);
+//Console.WriteLine("DEBUG_2");
+            return Ok(result.Result);
+        }
+
         [HttpPost]
         [Route("org/{id}/action/GetHuntingRules")]
         public IActionResult GetHuntingRules(string id, [FromBody] VMHuntingRule param)
