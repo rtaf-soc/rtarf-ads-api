@@ -70,7 +70,7 @@ namespace Its.Ads.Api.Database.Repositories
 
             var predicate = IpMapPredicate(param!);
             var arr = context!.IpMaps!.Where(predicate)
-                .OrderByDescending(e => e.Cidr)
+                .OrderByDescending(e => e.Zone)
                 .Skip(offset)
                 .Take(limit)
                 .ToList();
