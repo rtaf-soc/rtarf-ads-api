@@ -74,7 +74,7 @@ namespace Its.Ads.Api.Database.Repositories
             var predicate = HuntingRulePredicate(param!);
             var arr = context!.HuntingRules!.Where(predicate)
                 .OrderByDescending(e => e.IsActive) //เอา 1 ขึ้นมาก่อน หมายถึง active
-                .OrderByDescending(e => e.RuleCreatedDate)
+                .ThenByDescending(e => e.RuleCreatedDate)
                 .Skip(offset)
                 .Take(limit)
                 .ToList();
