@@ -43,6 +43,9 @@ namespace Its.Ads.Api.Models
         [Column("lucene_query")]
         public string? LuceneQuery { get; set; }
 
+        [Column("is_active")]
+        public int? IsActive { get; set; } /* 1=TRUE, 0=false */
+
         public MHuntingRule()
         {
             RuleId = Guid.NewGuid();
