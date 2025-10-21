@@ -135,6 +135,7 @@ namespace Its.Ads.Api.Database.Repositories
                 result.RuleDefinition = huntingRule.RuleDefinition;
                 result.RefUrl = huntingRule.RefUrl;
                 result.Tags = huntingRule.Tags;
+                result.IsActive = huntingRule.IsActive;
 
                 context!.SaveChanges();
             }
