@@ -109,6 +109,7 @@ namespace Its.Ads.Api.Database.Repositories
 
             if (result != null)
             {
+                result.Name = device.Name;
                 result.Description = device.Description;
                 result.IpAddress = device.IpAddress;
                 result.Tags = device.Tags;
