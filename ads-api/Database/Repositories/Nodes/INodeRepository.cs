@@ -21,5 +21,6 @@ namespace Its.Ads.Api.Database.Repositories
         public MNodeLink? UpdateLinkById(string linkId, MNodeLink link);
 
         public IEnumerable<MNode> GetConnectableNodes(string nodeId);
+        public IEnumerable<MNodeStatus> GetNodesStatus(string layer);
     }
 }

@@ -215,6 +215,35 @@ namespace Its.Ads.Api.Database.Repositories
             return result!;
         }
 
+        public IEnumerable<MNodeStatus> GetNodesStatus(string layer)
+        {
+            var arr = context!.NodeStatus!
+                .Where(l => l.OrgId == orgId && l.Layer == layer)
+                .Join(context!.Nodes!,
+                    l => l.NodeId,
+                    n => n.Id,
+                    (l, n) => new
+                    {
+                        NodeStatus = l,
+                        Node = n
+                    })
+                .OrderBy(e => e.Node.Name)
+                .Select(e => new MNodeStatus
+                {
+                    Id = e.NodeStatus.Id,
+                    OrgId = e.NodeStatus.OrgId,
+                    Status = e.NodeStatus.Status,
+                    NodeId = e.NodeStatus.NodeId,
+                    NodeName = e.Node.Name,
+                    NodeDescription = e.Node.Description,
+                    NodeType = e.Node.Type,
+                    NodeTags = e.Node.Tags,
+                })
+                .ToList();
+
+            return arr;
+        }
+
         public IEnumerable<MNodeLink> GetNodeLinks(string nodeId)
         {
             var srcNodeId = Guid.Parse(nodeId);

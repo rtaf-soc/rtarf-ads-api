@@ -16,6 +16,7 @@ namespace Its.Ads.Api.Services
 
         public IEnumerable<MKeyValue> GetLayers(string orgId);
         public IEnumerable<MKeyValue> GetNodeTypes(string orgId);
+        public IEnumerable<MNodeStatus> GetNodesStatus(string orgId, string layer);
 
         public MVNodeLink? AddLink(string orgId, string srcNodeId, MNodeLink link);
         public IEnumerable<MNodeLink> GetNodeLinks(string orgId, string nodeId);

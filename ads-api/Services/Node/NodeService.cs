@@ -101,6 +101,14 @@ namespace Its.Ads.Api.Services
             return result;
         }
 
+        public IEnumerable<MNodeStatus> GetNodesStatus(string orgId, string layer)
+        {
+            repository!.SetCustomOrgId(orgId);
+            var result = repository!.GetNodesStatus(layer);
+
+            return result; 
+        }
+
         public IEnumerable<MNode> GetConnectableNodes(string orgId, string nodeId)
         {
             repository!.SetCustomOrgId(orgId);

@@ -32,6 +32,16 @@ namespace Its.Ads.Api.Models
         [Column("updated_date")]
         public DateTime? UpdatedDate { get; set; }
 
+        [NotMapped]
+        public string? NodeName { get; set; }
+        [NotMapped]
+        public string? NodeDescription { get; set; }
+        [NotMapped]
+        public string? NodeType { get; set; }
+        [NotMapped]
+        public string? NodeTags { get; set; }
+
+
         public MNodeStatus()
         {
             Id = Guid.NewGuid();

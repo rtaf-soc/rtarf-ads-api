@@ -62,6 +62,14 @@ namespace Its.Ads.Api.Controllers
         }
 
         [HttpPost]
+        [Route("org/{id}/action/GetNodesStatus/{layer}")]
+        public IActionResult GetNodesStatus(string id, string layer)
+        {
+            var result = svc.GetNodesStatus(id, layer);
+            return Ok(result);
+        }
+
+        [HttpPost]
         [Route("org/{id}/action/GetNodeCount")]
         public IActionResult GetNodeCount(string id, [FromBody] VMNode param)
         {
