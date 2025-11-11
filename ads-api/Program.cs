@@ -37,6 +37,7 @@ namespace Its.Ads.Api
             {
                 o.CommandTimeout(1200);
                 o.UseVector();
+                o.UseNetTopologySuite();
             }));
             builder.Services.AddTransient<DataSeeder>();
 

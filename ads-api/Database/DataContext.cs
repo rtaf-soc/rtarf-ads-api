@@ -37,6 +37,9 @@ public class DataContext : DbContext, IDataContext
     public DbSet<MNewsFeed>? NewsFeed { get; set; }
     public DbSet<MNote>? Notes { get; set; }
     public DbSet<MTextEmbedding>? TextEmbeddings { get; set; }
+    public DbSet<MNode>? Nodes { get; set; }
+    public DbSet<MNodeLink>? NodeLinks { get; set; }
+    public DbSet<MNodeStatus>? NodeStatus { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -69,5 +72,14 @@ public class DataContext : DbContext, IDataContext
         modelBuilder.Entity<MTextEmbedding>()
             .Property(d => d.EmbeddingBgeM3)
             .HasColumnType("vector(1024)");
+
+        modelBuilder.Entity<MNode>(entity =>
+        {
+            entity.Property(e => e.Location)
+                .HasColumnType("geometry(Point,4326)");
+        });
+
+        modelBuilder.Entity<MNodeLink>();
+        modelBuilder.Entity<MNodeStatus>();
     }
 }

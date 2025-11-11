@@ -26,5 +26,8 @@ namespace Its.Ads.Api.Database
         public DbSet<MNewsFeed>? NewsFeed { get; set; }
         public DbSet<MNote>? Notes { get; set; }
         public DbSet<MTextEmbedding>? TextEmbeddings { get; set; }
+        public DbSet<MNode>? Nodes { get; set; }
+        public DbSet<MNodeLink>? NodeLinks { get; set; }
+        public DbSet<MNodeStatus>? NodeStatus { get; set; }
     }
 }
