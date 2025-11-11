@@ -9,6 +9,8 @@ using Its.Ads.Api.Services;
 using Its.Ads.Api.Database.Repositories;
 using Its.Ads.Api.Authorizations;
 using Its.Ads.Api.Authentications;
+using NetTopologySuite.IO.Converters;
+
 
 namespace Its.Ads.Api
 {
@@ -24,7 +26,13 @@ namespace Its.Ads.Api
 
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllers()
-                .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
+                .AddNewtonsoftJson(options =>
+                {
+                    // รองรับ NetTopologySuite
+                    options.SerializerSettings.Converters.Add(new GeometryConverter());
+                    // ทำให้ JSON อ่านง่าย
+                    options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+                });
 
             var cfg = builder.Configuration;
             var connStr = $"Host={cfg["PostgreSQL:Host"]}; Database={cfg["PostgreSQL:Database"]}; Username={cfg["PostgreSQL:User"]}; Password={cfg["PostgreSQL:Password"]}";
@@ -55,6 +63,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<IDeviceService, DeviceService>();
             builder.Services.AddScoped<INoteService, NoteService>();
             builder.Services.AddScoped<IOrganizationUserService, OrganizationUserService>();
+            builder.Services.AddScoped<INodeService, NodeService>();
 
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<IApiKeyRepository, ApiKeyRepository>();
@@ -69,6 +78,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
             builder.Services.AddScoped<INoteRepository, NoteRepository>();
             builder.Services.AddScoped<IOrganizationUserRepository, OrganizationUserRepository>();
+            builder.Services.AddScoped<INodeRepository, NodeRepository>();
 
             builder.Services.AddTransient<IAuthorizationHandler, GenericRbacHandler>();
             builder.Services.AddScoped<IBasicAuthenticationRepo, BasicAuthenticationRepo>();
@@ -77,7 +87,8 @@ namespace Its.Ads.Api
             builder.Services.AddAuthentication("BasicOrBearer")
                 .AddScheme<AuthenticationSchemeOptions, AuthenticationHandlerProxy>("BasicOrBearer", null);
 
-            builder.Services.AddAuthorization(options => {
+            builder.Services.AddAuthorization(options =>
+            {
                 var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder("BasicOrBearer");
                 defaultAuthorizationPolicyBuilder = defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
                 options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();

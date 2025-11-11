@@ -19,17 +19,30 @@ namespace Its.Ads.Api.Models
         [Column("name")] 
         public string? Name { get; set; }
 
+        [Column("description")]
+        public string? Description { get; set; }
+        
         [Column("layer")]
         public string? Layer { get; set; }
 
         [Column("tags")] 
         public string? Tags { get; set; }
 
+        [Column("type")]
+        public string? Type { get; set; } /* Router, Firewall, Switch, VM */
+        
+
         [Column("location")] 
         public Point? Location { get; set; }
+        [Column("latitude")]
+        public double Latitude { get; set; }
+        [Column("longitude")] 
+        public double Longitude { get; set; }
+
 
         [Column("created_date")]
         public DateTime? CreatedDate { get; set; }
+
 
         public MNode()
         {

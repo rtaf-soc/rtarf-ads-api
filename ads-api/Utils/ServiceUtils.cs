@@ -17,6 +17,22 @@ namespace Its.Ads.Api.Utils
             }
         }
 
+        public static bool IsLatitudeValid(double lat)
+        {
+            if (lat < -90 || lat > 90)
+                return false;
+
+            return true;
+        }
+
+        public static bool IsLongitudeValid(double lng)
+        {
+            if (lng < -180 || lng > 180)
+                return false;
+
+            return true;
+        }
+
         public static string GetOrgId(HttpRequest request)
         {
             var pattern = @"^\/api\/(.+)\/org\/(.+)\/action\/(.+)$";

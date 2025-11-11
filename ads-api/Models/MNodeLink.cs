@@ -19,6 +19,9 @@ namespace Its.Ads.Api.Models
         [Column("name")] 
         public string? Name { get; set; }
 
+        [Column("description")]
+        public string? Description { get; set; }
+
         [Column("layer")]
         public string? Layer { get; set; }
 
@@ -33,6 +36,11 @@ namespace Its.Ads.Api.Models
 
         [Column("created_date")]
         public DateTime? CreatedDate { get; set; }
+
+        [NotMapped]
+        public string? DestinationNodeType { get; set; }
+        [NotMapped]
+        public string? DestinationNodeName { get; set; }
 
         public MNodeLink()
         {
