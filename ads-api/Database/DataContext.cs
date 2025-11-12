@@ -81,5 +81,7 @@ public class DataContext : DbContext, IDataContext
 
         modelBuilder.Entity<MNodeLink>();
         modelBuilder.Entity<MNodeStatus>();
+        modelBuilder.Entity<MNodeStatus>()
+            .HasIndex(t => new { t.OrgId, t.NodeId }).IsUnique();
     }
 }
