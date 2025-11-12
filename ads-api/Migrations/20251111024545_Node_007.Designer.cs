@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -13,9 +14,11 @@ using Pgvector;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20251111024545_Node_007")]
+    partial class Node_007
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1058,9 +1061,6 @@ namespace ads_api.Migrations
                         .HasColumnName("updated_date");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrgId", "NodeId")
-                        .IsUnique();
 
                     b.ToTable("NodeStatus");
                 });

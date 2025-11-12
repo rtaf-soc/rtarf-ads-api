@@ -3,6 +3,7 @@ using System;
 using Its.Ads.Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -13,9 +14,11 @@ using Pgvector;
 namespace ads_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20251111004449_Node_004")]
+    partial class Node_004
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -941,14 +944,6 @@ namespace ads_api.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text")
-                        .HasColumnName("description");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("double precision")
-                        .HasColumnName("latitude");
-
                     b.Property<string>("Layer")
                         .HasColumnType("text")
                         .HasColumnName("layer");
@@ -956,10 +951,6 @@ namespace ads_api.Migrations
                     b.Property<Point>("Location")
                         .HasColumnType("geometry(Point,4326)")
                         .HasColumnName("location");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("double precision")
-                        .HasColumnName("longitude");
 
                     b.Property<string>("Name")
                         .HasColumnType("text")
@@ -972,10 +963,6 @@ namespace ads_api.Migrations
                     b.Property<string>("Tags")
                         .HasColumnType("text")
                         .HasColumnName("tags");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("text")
-                        .HasColumnName("type");
 
                     b.HasKey("Id");
 
@@ -992,10 +979,6 @@ namespace ads_api.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text")
-                        .HasColumnName("description");
 
                     b.Property<Guid?>("DestinationNode")
                         .HasColumnType("uuid")
@@ -1058,9 +1041,6 @@ namespace ads_api.Migrations
                         .HasColumnName("updated_date");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrgId", "NodeId")
-                        .IsUnique();
 
                     b.ToTable("NodeStatus");
                 });
