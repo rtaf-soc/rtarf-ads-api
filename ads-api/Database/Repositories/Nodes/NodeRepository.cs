@@ -47,12 +47,12 @@ namespace Its.Ads.Api.Database.Repositories
                 pd = pd.And(fullTextPd);
             }
 
-            if ((param.Layout != "") && (param.Layout != null))
+            if ((param.Layer != "") && (param.Layer != null))
             {
-                var layoutPd = PredicateBuilder.New<MNode>();
-                layoutPd = layoutPd.Or(p => p.Layer!.Equals(param.Layout));
+                var layerPd = PredicateBuilder.New<MNode>();
+                layerPd = layerPd.Or(p => p.Layer!.Equals(param.Layer));
 
-                pd = pd.And(layoutPd);
+                pd = pd.And(layerPd);
             }
 
             if ((param.Type != "") && (param.Type != null))
