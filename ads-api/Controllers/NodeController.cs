@@ -61,7 +61,7 @@ namespace Its.Ads.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("org/{id}/action/GetNodesByLayer/{layer}")]
         public IActionResult GetNodesByLayer(string id, string layer)
         {

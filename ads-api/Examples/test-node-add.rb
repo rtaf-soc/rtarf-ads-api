@@ -14,13 +14,13 @@ orgId = ENV['API_ORG']
 
 apiUrl = "api/Node/org/#{orgId}/action/AddNode"
 param =  {
-  Name: "RTARF-HQ-ROUTER-001",
+  Name: "RTARF-HQ-ROUTER-003",
   Description: "Head quater router",
   Tags: "test",
-  Layer: "Internal",
+  Layer: "RTARF-Internal",
   Type: "Router",
-  Latitude: 20.54,
-  Longitude: 49.87,
+  Latitude: 25.54,
+  Longitude: 19.87,
 }
 
 result = make_request(:post, apiUrl, param)
