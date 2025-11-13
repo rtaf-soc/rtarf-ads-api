@@ -47,12 +47,12 @@ namespace Its.Ads.Api.Database.Repositories
                 pd = pd.And(fullTextPd);
             }
 
-            if ((param.Layout != "") && (param.Layout != null))
+            if ((param.Layer != "") && (param.Layer != null))
             {
-                var layoutPd = PredicateBuilder.New<MNode>();
-                layoutPd = layoutPd.Or(p => p.Layer!.Equals(param.Layout));
+                var layerPd = PredicateBuilder.New<MNode>();
+                layerPd = layerPd.Or(p => p.Layer!.Equals(param.Layer));
 
-                pd = pd.And(layoutPd);
+                pd = pd.And(layerPd);
             }
 
             if ((param.Type != "") && (param.Type != null))
@@ -265,6 +265,7 @@ namespace Its.Ads.Api.Database.Repositories
                     OrgId = e.Link.OrgId,
                     Description = e.Link.Description,
                     Name = e.Link.Name,
+                    SourceNode = e.Link.SourceNode,
                     DestinationNode = e.Link.DestinationNode,
                     DestinationNodeType = e.Node.Type,
                     DestinationNodeName = e.Node.Name,
