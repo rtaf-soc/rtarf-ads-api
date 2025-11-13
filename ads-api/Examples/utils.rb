@@ -34,7 +34,7 @@ def make_request(method, apiName, data)
   
   if (!apiKey.nil?)
     request.basic_auth("api", apiKey)
-    puts("===== Using API KEY =====")
+    #puts("===== Using API KEY =====")
   end
 
   if (!data.nil?)

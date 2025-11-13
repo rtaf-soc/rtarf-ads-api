@@ -75,7 +75,7 @@ namespace Its.Ads.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("org/{id}/action/GetNodesStatus/{layer}")]
         public IActionResult GetNodesStatus(string id, string layer)
         {

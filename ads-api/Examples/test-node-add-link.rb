@@ -11,7 +11,7 @@ $stdout.sync = true
 load_env(".env")
 
 orgId = ENV['API_ORG']
-id = 'a5c2e6de-33ee-457d-b1eb-6c39c3ba37ee'
+id = 'dd08a261-d36c-4ad9-adad-9534f31259aa'
 
 apiUrl = "api/Node/org/#{orgId}/action/AddLink/#{id}"
 param = {
