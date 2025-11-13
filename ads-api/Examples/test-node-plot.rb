@@ -18,7 +18,7 @@ apiUrlGetNodesStatus = "api/Node/org/#{orgId}/action/GetNodesStatus/#{layer}"
 param = nil
 
 statusHash = {}
-ืnodesStatus = make_request(:post, apiUrlGetNodesStatus, param)
+ืnodesStatus = make_request(:get, apiUrlGetNodesStatus, param)
 ืnodesStatus.each do |nodeStatus|
   # เอา node id มาเป็น unique เพื่อใช้ lookup หา status ในอนาคต
   nodeId = nodeStatus['nodeId']
