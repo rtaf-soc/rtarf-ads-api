@@ -19,7 +19,7 @@ param = nil
 nodeHash = {}
 links = []
 
-ืnodes = make_request(:post, apiUrlGetNodes, param)
+ืnodes = make_request(:post, apiUrlGetNodes, param) # อนาคตเปลี่ยนเป็น method GET
 ืnodes.each do |node|
   nodeId = node['id']
   puts(nodeId)
@@ -31,7 +31,7 @@ links = []
   nodeLinks = make_request(:get, apiUrlGetNodeLinks, param)
   if (!nodeLinks.nil?)
     nodeLinks.each do |nodeLink|
-      puts(nodeLink['sourceNode'])
+      puts(nodeLink)
       links << nodeLink
     end
   end

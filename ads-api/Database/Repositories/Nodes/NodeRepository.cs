@@ -265,6 +265,7 @@ namespace Its.Ads.Api.Database.Repositories
                     OrgId = e.Link.OrgId,
                     Description = e.Link.Description,
                     Name = e.Link.Name,
+                    SourceNode = e.Link.SourceNode,
                     DestinationNode = e.Link.DestinationNode,
                     DestinationNodeType = e.Node.Type,
                     DestinationNodeName = e.Node.Name,

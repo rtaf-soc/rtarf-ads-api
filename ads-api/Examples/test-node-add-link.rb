@@ -11,14 +11,14 @@ $stdout.sync = true
 load_env(".env")
 
 orgId = ENV['API_ORG']
-id = 'dce164ba-4116-4656-bc40-b7339814ba9c'
+id = 'a5c2e6de-33ee-457d-b1eb-6c39c3ba37ee'
 
 apiUrl = "api/Node/org/#{orgId}/action/AddLink/#{id}"
 param = {
   Name: "link1",
   Description: "link2 description",
   Tags: "yyy",
-  DestinationNode: "e618409f-8496-4cce-ac72-7775d9e97c21",
+  DestinationNode: "f99a4a2f-6b83-4d15-a508-c0525157d40a",
 }
 
 result = make_request(:post, apiUrl, param)
