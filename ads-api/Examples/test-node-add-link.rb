@@ -18,7 +18,7 @@ param = {
   Name: "link1",
   Description: "link2 description",
   Tags: "yyy",
-  DestinationNode: "f99a4a2f-6b83-4d15-a508-c0525157d40a",
+  DestinationNode: "c2b5bf17-437a-4c4f-acd4-f9ab99de3593",
 }
 
 result = make_request(:post, apiUrl, param)

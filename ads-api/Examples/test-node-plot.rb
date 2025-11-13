@@ -51,8 +51,16 @@ nodeHash.each do |nodeId, node|
   nodeName = node['name']
   lat = node['latitude']
   lon = node['longitude']
+  nodeStatusObj = statusHash[nodeId]
 
-  puts "Plotting node [#{nodeName}], lat=[#{lat}], lon=[#{lon}], nodeId=[#{nodeId}]"
+  statusJsonStr = ""
+  if (!nodeStatusObj.nil?)
+    #เวลาเอา status ไปใช้งานต้องเอา statusJsonStr ไปแปลงจาก string เป็น object ก่อน, status สามารถมีได้หลายมุมมอง เช่น treat count
+    statusJsonStr = nodeStatusObj['status']
+  end
+
+
+  puts "Plotting node [#{nodeName}], lat=[#{lat}], lon=[#{lon}], nodeId=[#{nodeId}], status=[#{statusJsonStr}]"
 end
 
 # ดัดแปลง code ตรงนี้เอาไปทำให้เป็น JSON เพื่อให้ frontend เอาไปใช้งานง่าย ๆ 
