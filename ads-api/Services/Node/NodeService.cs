@@ -168,8 +168,11 @@ namespace Its.Ads.Api.Services
         {
             var list = new List<MKeyValue>()
             {
-                new MKeyValue { Name = "RTARF-Internal", Value = "RTARF internal network" },
-                new MKeyValue { Name = "RTARF-External", Value = "RTARF external network" },
+                new MKeyValue { Name = "RTARF INTERNAL NETWORK", Value = "RTARF INTERNAL NETWORK" },
+                new MKeyValue { Name = "EXTERNAL NETWORK", Value = "EXTERNAL NETWORK" },
+                new MKeyValue { Name = "THAILAND INFRASTRUCTURE", Value = "THAILAND INFRASTRUCTURE" },
+                new MKeyValue { Name = "OPPOSITE INFRASTRUCTURE", Value = "OPPOSITE INFRASTRUCTURE" },
+                new MKeyValue { Name = "OPPOSITE TARGET LIST", Value = "OPPOSITE TARGET LIST" },
             };
 
             return list;
