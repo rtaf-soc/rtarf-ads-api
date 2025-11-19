@@ -11,7 +11,7 @@ $stdout.sync = true
 load_env(".env")
 
 orgId = ENV['API_ORG']
-layer = "RTARF-Internal" # ตรงนี้ต้องเรียก API GetLayers() แล้วเอา Name มาใช้
+layer = "RTARF INTERNAL NETWORK" # ตรงนี้ต้องเรียก API GetLayers() แล้วเอา Name มาใช้
 
 apiUrlGetNodes = "api/Node/org/#{orgId}/action/GetNodesByLayer/#{layer}"
 apiUrlGetNodesStatus = "api/Node/org/#{orgId}/action/GetNodesStatus/#{layer}"
