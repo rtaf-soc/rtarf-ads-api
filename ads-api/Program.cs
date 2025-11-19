@@ -64,6 +64,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<INoteService, NoteService>();
             builder.Services.AddScoped<IOrganizationUserService, OrganizationUserService>();
             builder.Services.AddScoped<INodeService, NodeService>();
+            builder.Services.AddScoped<IAnalyticService, AnalyticService>();
 
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<IApiKeyRepository, ApiKeyRepository>();
