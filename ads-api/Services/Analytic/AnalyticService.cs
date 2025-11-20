@@ -8,9 +8,9 @@ namespace Its.Ads.Api.Services
 {
     public class AnalyticService : BaseService, IAnalyticService
     {
-        private readonly INodeRepository? repository = null;
+        private readonly IAnalyticRepository repository;
 
-        public AnalyticService(INodeRepository repo) : base()
+        public AnalyticService(IAnalyticRepository repo) : base()
         {
             repository = repo;
         }
@@ -41,12 +41,18 @@ namespace Its.Ads.Api.Services
 
         public IEnumerable<Threat> GetThreatSeverities(string orgId)
         {
-            var list = new List<Threat>()
+            repository.SetCustomOrgId(orgId);
+            var list = repository.GetThreatSeverities(24);
+
+            if (list.Count() == 0)
             {
-                new() { Serverity = "High", Quantity = 1700 },
-                new() { Serverity = "Medium", Quantity = 970 },
-                new() { Serverity = "Low", Quantity = 800 }
-            };
+                list = new List<Threat>()
+                {
+                    new() { Serverity = "High (M)", Quantity = 1700 },
+                    new() { Serverity = "Medium (M)", Quantity = 970 },
+                    new() { Serverity = "Low (M)", Quantity = 800 }
+                };
+            }
 
             return list;
         }
