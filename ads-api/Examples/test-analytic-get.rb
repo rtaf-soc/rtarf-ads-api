@@ -16,6 +16,7 @@ apiUrl1 = "api/Analytic/org/#{orgId}/action/GetDefConStatus"
 apiUrl2 = "api/Analytic/org/#{orgId}/action/GetReconCountries"
 apiUrl3 = "api/Analytic/org/#{orgId}/action/GetThreatDistributions"
 apiUrl4 = "api/Analytic/org/#{orgId}/action/GetThreatAlerts"
+apiUrl5 = "api/Analytic/org/#{orgId}/action/GetThreatSeverities"
 
 param = nil
 
@@ -32,5 +33,9 @@ puts(result)
 puts("===")
 
 result = make_request(:get, apiUrl4, param)
+puts(result)
+puts("===")
+
+result = make_request(:get, apiUrl5, param)
 puts(result)
 puts("===")

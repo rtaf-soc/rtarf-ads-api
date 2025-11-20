@@ -10,5 +10,6 @@ namespace Its.Ads.Api.Services
         public IEnumerable<ReconStatus> GetReconCountries(string orgId);
         public IEnumerable<Threat> GetThreatDistributions(string orgId);
         public IEnumerable<Threat> GetThreatAlerts(string orgId);
+        public IEnumerable<Threat> GetThreatSeverities(string orgId);
     }
 }
