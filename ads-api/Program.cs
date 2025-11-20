@@ -80,6 +80,7 @@ namespace Its.Ads.Api
             builder.Services.AddScoped<INoteRepository, NoteRepository>();
             builder.Services.AddScoped<IOrganizationUserRepository, OrganizationUserRepository>();
             builder.Services.AddScoped<INodeRepository, NodeRepository>();
+            builder.Services.AddScoped<IAnalyticRepository, AnalyticRepository>();
 
             builder.Services.AddTransient<IAuthorizationHandler, GenericRbacHandler>();
             builder.Services.AddScoped<IBasicAuthenticationRepo, BasicAuthenticationRepo>();
