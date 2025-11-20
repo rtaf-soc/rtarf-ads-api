@@ -65,7 +65,10 @@ namespace Its.Ads.Api.Services
                 new() { ThreatName = "Malwares", Percentage = 25 },
                 new() { ThreatName = "DDoS", Percentage = 20 },
                 new() { ThreatName = "Phising", Percentage = 15 },
-                new() { ThreatName = "Others", Percentage = 5 },
+                new() { ThreatName = "Mocked#1", Percentage = 1 },
+                new() { ThreatName = "Mocked#2", Percentage = 1 },
+                new() { ThreatName = "Mocked#3", Percentage = 1 },
+                new() { ThreatName = "Mocked#4", Percentage = 2 },
             };
 
             return list; 

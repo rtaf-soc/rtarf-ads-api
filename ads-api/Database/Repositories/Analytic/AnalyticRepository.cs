@@ -21,12 +21,13 @@ namespace Its.Ads.Api.Database.Repositories
                 .Where(x =>
                     x.OrgId == orgId &&
                     x.CustomField1 != null &&
+                    x.CustomField1 != "" &&
                     x.AggregatorType == "aggr_xsiam_incident_v1" &&
                     x.EventDate > cutoff)
                 .GroupBy(x => x.CustomField1)
                 .Select(g => new Threat
                 {
-                    ThreatName = g.Key!,
+                    Serverity = g.Key,
                     Quantity = g.Sum(x => x.EventCount ?? 0)
                 })
                 .OrderByDescending(x => x.Quantity)
