@@ -41,7 +41,7 @@ namespace Its.Ads.Api.Controllers
         [Route("org/{id}/action/GetThreatDistributions")]
         public IActionResult GetThreatDistributions(string id)
         {
-            var result = svc.GetThreatDistributions(id);            
+            var result = svc.GetThreatCategories(id);            
             return Ok(result);
         }
 

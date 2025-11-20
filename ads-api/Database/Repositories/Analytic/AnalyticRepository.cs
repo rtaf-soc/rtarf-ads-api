@@ -1,8 +1,5 @@
-using LinqKit;
 using Its.Ads.Api.Models;
-using Its.Ads.Api.ViewsModels;
-using NetTopologySuite.Geometries;
-using Confluent.Kafka;
+using Microsoft.EntityFrameworkCore;
 
 namespace Its.Ads.Api.Database.Repositories
 {
@@ -11,6 +8,55 @@ namespace Its.Ads.Api.Database.Repositories
         public AnalyticRepository(IDataContext ctx)
         {
             context = ctx;
+        }
+
+        public IEnumerable<Threat> GetThreatAlerts(int durationHour)
+        {
+            var cutoff = DateTime.UtcNow.AddHours(-durationHour);
+
+            var arr = context!.LogAggregates!
+                .Where(x =>
+                    x.OrgId == orgId &&
+                    x.CustomField4 != null &&
+                    x.CustomField4 != "" &&
+                    x.AggregatorType == "aggr_xsiam_incident_v1" &&
+                    !x.CustomField4.StartsWith("[") &&
+                    x.CustomField1 == "high" &&
+                    x.EventDate > cutoff)
+                .Select(g => new Threat
+                {
+                    ThreatName = g.CustomField4!,
+                    ThreatDetail = g.CustomField5!,
+                    Serverity = g.CustomField7,
+                })
+                .OrderByDescending(x => Convert.ToInt32(x.Serverity))
+                .ToList();
+
+            return arr;
+        }
+
+        public IEnumerable<Threat> GetThreatCategories(int durationHour)
+        {
+            var cutoff = DateTime.UtcNow.AddHours(-durationHour);
+
+            var arr = context!.LogAggregates!
+                .Where(x =>
+                    x.OrgId == orgId &&
+                    x.CustomField4 != null &&
+                    x.CustomField4 != "" &&
+                    x.AggregatorType == "aggr_xsiam_incident_v1" &&
+                    !x.CustomField4.StartsWith("[") &&
+                    x.EventDate > cutoff)
+                .GroupBy(x => x.CustomField4)
+                .Select(g => new Threat
+                {
+                    ThreatName = g.Key!,
+                    Quantity = g.Sum(x => x.EventCount ?? 0)
+                })
+                .OrderByDescending(x => x.Quantity)
+                .ToList();
+
+            return arr;
         }
 
         public IEnumerable<Threat> GetThreatSeverities(int durationHour)

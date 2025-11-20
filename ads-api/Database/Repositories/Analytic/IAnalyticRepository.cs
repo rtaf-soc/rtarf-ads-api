@@ -7,5 +7,7 @@ namespace Its.Ads.Api.Database.Repositories
         public void SetCustomOrgId(string customOrgId);
 
         public IEnumerable<Threat> GetThreatSeverities(int durationHour);
+        public IEnumerable<Threat> GetThreatCategories(int durationHour);
+        public IEnumerable<Threat> GetThreatAlerts(int durationHour);
     }
 }
