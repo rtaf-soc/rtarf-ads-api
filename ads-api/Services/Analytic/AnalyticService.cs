@@ -1,8 +1,6 @@
 using Its.Ads.Api.Models;
-using Its.Ads.Api.ModelsViews;
 using Its.Ads.Api.Database.Repositories;
-using Its.Ads.Api.Utils;
-using Its.Ads.Api.ViewsModels;
+
 
 namespace Its.Ads.Api.Services
 {
@@ -46,44 +44,56 @@ namespace Its.Ads.Api.Services
 
             if (list.Count() == 0)
             {
-                list = new List<Threat>()
-                {
+                list =
+                [
                     new() { Serverity = "High (M)", Quantity = 1700 },
                     new() { Serverity = "Medium (M)", Quantity = 970 },
                     new() { Serverity = "Low (M)", Quantity = 800 }
-                };
+                ];
             }
 
             return list;
         }
 
-        public IEnumerable<Threat> GetThreatDistributions(string orgId)
+        public IEnumerable<Threat> GetThreatCategories(string orgId)
         {
-            var list = new List<Threat>()
+            repository.SetCustomOrgId(orgId);
+            var list = repository.GetThreatCategories(24);
+
+            if (list.Count() == 0)
             {
-                new() { ThreatName = "IP Sweep", Percentage = 35 },
-                new() { ThreatName = "Malwares", Percentage = 25 },
-                new() { ThreatName = "DDoS", Percentage = 20 },
-                new() { ThreatName = "Phising", Percentage = 15 },
-                new() { ThreatName = "Mocked#1", Percentage = 1 },
-                new() { ThreatName = "Mocked#2", Percentage = 1 },
-                new() { ThreatName = "Mocked#3", Percentage = 1 },
-                new() { ThreatName = "Mocked#4", Percentage = 2 },
-            };
+                list =
+                [
+                    new() { ThreatName = "IP Sweep", Percentage = 35 },
+                    new() { ThreatName = "Malwares", Percentage = 25 },
+                    new() { ThreatName = "DDoS", Percentage = 20 },
+                    new() { ThreatName = "Phising", Percentage = 15 },
+                    new() { ThreatName = "Mocked#1", Percentage = 1 },
+                    new() { ThreatName = "Mocked#2", Percentage = 1 },
+                    new() { ThreatName = "Mocked#3", Percentage = 1 },
+                    new() { ThreatName = "Mocked#4", Percentage = 2 },
+                ];
+            }
 
             return list; 
         }
 
         public IEnumerable<Threat> GetThreatAlerts(string orgId)
         {
-            var list = new List<Threat>()
+            repository.SetCustomOrgId(orgId);
+            var list = repository.GetThreatAlerts(24);
+
+            if (list.Count() == 0)
             {
-                new() { ThreatName = "THREAT #5", ThreatDetail = "8281034OCT24" },
-                new() { ThreatName = "THREAT #4", ThreatDetail = "2809420CT24" },
-                new() { ThreatName = "THREAT #3", ThreatDetail = "2805350CT24" },
-                new() { ThreatName = "THREAT #2", ThreatDetail = "2801030CT24" },
-                new() { ThreatName = "THREAT #1", ThreatDetail = "272315OCT24" },
-            };
+                list =
+                [
+                    new() { ThreatName = "THREAT #5", ThreatDetail = "8281034OCT24" },
+                    new() { ThreatName = "THREAT #4", ThreatDetail = "2809420CT24" },
+                    new() { ThreatName = "THREAT #3", ThreatDetail = "2805350CT24" },
+                    new() { ThreatName = "THREAT #2", ThreatDetail = "2801030CT24" },
+                    new() { ThreatName = "THREAT #1", ThreatDetail = "272315OCT24" },
+                ];
+            }
 
             return list; 
         }
