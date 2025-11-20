@@ -53,5 +53,14 @@ namespace Its.Ads.Api.Controllers
             var result = svc.GetThreatAlerts(id);            
             return Ok(result);
         }
+
+        [ExcludeFromCodeCoverage]
+        [HttpGet]
+        [Route("org/{id}/action/GetThreatSeverities")]
+        public IActionResult GetThreatSeverities(string id)
+        {
+            var result = svc.GetThreatSeverities(id);            
+            return Ok(result);
+        }
     }
 }

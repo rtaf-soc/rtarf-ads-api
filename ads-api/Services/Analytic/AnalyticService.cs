@@ -39,6 +39,18 @@ namespace Its.Ads.Api.Services
             return list;
         }
 
+        public IEnumerable<Threat> GetThreatSeverities(string orgId)
+        {
+            var list = new List<Threat>()
+            {
+                new() { Serverity = "High", Quantity = 1700 },
+                new() { Serverity = "Medium", Quantity = 970 },
+                new() { Serverity = "Low", Quantity = 800 }
+            };
+
+            return list;
+        }
+
         public IEnumerable<Threat> GetThreatDistributions(string orgId)
         {
             var list = new List<Threat>()
