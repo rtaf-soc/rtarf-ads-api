@@ -125,6 +125,22 @@ namespace Its.Ads.Api.Services
                 summary.SeveritySummary = [.. serverities];
             }
 
+            var calculatedServerities = repository.GetMitrSeveritieCalculatedStats(fromDate, toDate);
+            if (calculatedServerities.Count() == 0)
+            {
+                summary.CalculatedSeveritySummary =
+                [
+                    new() { SeverityName = "Critical", Quantity = 230 },
+                    new() { SeverityName = "High", Quantity = 200 },
+                    new() { SeverityName = "Medium", Quantity = 123 },
+                    new() { SeverityName = "Low", Quantity = 104 },
+                ];
+            }
+            else
+            {
+                summary.CalculatedSeveritySummary = [.. calculatedServerities];
+            }
+
             var tactics = repository.GetMitrTacticTechniqueStats(fromDate, toDate);
             if (tactics.Count() == 0)
             {
