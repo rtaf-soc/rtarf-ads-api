@@ -87,11 +87,11 @@ namespace Its.Ads.Api.Services
             {
                 list =
                 [
-                    new() { ThreatName = "THREAT #5", ThreatDetail = "8281034OCT24" },
-                    new() { ThreatName = "THREAT #4", ThreatDetail = "2809420CT24" },
-                    new() { ThreatName = "THREAT #3", ThreatDetail = "2805350CT24" },
-                    new() { ThreatName = "THREAT #2", ThreatDetail = "2801030CT24" },
-                    new() { ThreatName = "THREAT #1", ThreatDetail = "272315OCT24" },
+                    new() { ThreatName = "THREAT #5", ThreatDetail = "8281034OCT24", IncidentID = "1" },
+                    new() { ThreatName = "THREAT #4", ThreatDetail = "2809420CT24", IncidentID = "2" },
+                    new() { ThreatName = "THREAT #3", ThreatDetail = "2805350CT24", IncidentID = "70" },
+                    new() { ThreatName = "THREAT #2", ThreatDetail = "2801030CT24", IncidentID = "15" },
+                    new() { ThreatName = "THREAT #1", ThreatDetail = "272315OCT24", IncidentID = "21" },
                 ];
             }
 

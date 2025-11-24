@@ -5,6 +5,7 @@ namespace Its.Ads.Api.Models
         public string ThreatName { get; set; }
         public string ThreatDetail { get; set; }
         public string? Serverity { get; set; }
+        public string IncidentID { get; set; }
         public long Quantity { get; set; }
         public double Percentage { get; set; }
         public string? MitrTechniqueName { get; set; }
@@ -16,6 +17,7 @@ namespace Its.Ads.Api.Models
             Percentage = 0;
             ThreatName = "";
             ThreatDetail = "";
+            IncidentID = "";
         }
     }
 }
