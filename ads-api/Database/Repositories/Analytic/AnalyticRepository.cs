@@ -131,7 +131,7 @@ namespace Its.Ads.Api.Database.Repositories
             }
 
             var count = query
-                .Select(x => x.CustomField11)
+                .Select(x => x.CustomField12)
                 .Distinct()
                 .Count();
 
