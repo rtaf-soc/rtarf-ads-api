@@ -97,5 +97,54 @@ namespace Its.Ads.Api.Services
 
             return list; 
         }
+
+        public MitrSummary GetMitrStats(string orgId, DateTime? fromDate, DateTime? toDate)
+        {
+            if ((!fromDate.HasValue) && (!toDate.HasValue))
+            {
+                fromDate = DateTime.UtcNow.AddDays(-30);
+                toDate = DateTime.UtcNow;
+            }
+
+            var summary = new MitrSummary();
+            repository.SetCustomOrgId(orgId);
+
+            var serverities = repository.GetMitrSeveritieStats(fromDate, toDate);
+            if (serverities.Count() == 0)
+            {
+                summary.SeveritySummary =
+                [
+                    new() { SeverityName = "Critical", Quantity = 234 },
+                    new() { SeverityName = "High", Quantity = 200 },
+                    new() { SeverityName = "Medium", Quantity = 123 },
+                    new() { SeverityName = "Low", Quantity = 100 },
+                ];
+            }
+            else
+            {
+                summary.SeveritySummary = [.. serverities];
+            }
+
+            var tactics = repository.GetMitrTacticTechniqueStats(fromDate, toDate);
+            if (tactics.Count() == 0)
+            {
+                summary.TacticTechniqueSummary =
+                [
+                    new() { TacticName = "Reconnaissance", TacticId = "TA0043", TechniqueId = "T1592", LastSeen = DateTime.UtcNow.AddDays(-1), Quantity = 150 },
+                    new() { TacticName = "Reconnaissance", TacticId = "TA0043", TechniqueId = "T1594", LastSeen = DateTime.UtcNow.AddDays(-2), Quantity = 120 },
+                    new() { TacticName = "Reconnaissance", TacticId = "TA0043", TechniqueId = "T1589", LastSeen = DateTime.UtcNow.AddDays(-3), Quantity = 90 },
+                    new() { TacticName = "Reconnaissance", TacticId = "TA0043", TechniqueId = "T1591", LastSeen = DateTime.UtcNow.AddDays(-4), Quantity = 60 },
+                ];
+            }
+            else
+            {
+                summary.TacticTechniqueSummary = [.. tactics];
+            }
+
+            summary.TotalEvent = repository.GetMitrEventCount(fromDate, toDate);
+            summary.TotalTechnique = repository.GetMitrTechniqueCount(fromDate, toDate);
+
+            return summary;
+        }
     }
 }

@@ -10,6 +10,134 @@ namespace Its.Ads.Api.Database.Repositories
             context = ctx;
         }
 
+        public IEnumerable<MitrStat> GetMitrSeveritieStats(DateTime? fromDate, DateTime? toDate)
+        {
+            var query = context!.LogAggregates!
+                .Where(x =>
+                    x.OrgId == orgId &&
+                    x.CustomField8 != null &&
+                    x.CustomField8 != "" &&
+                    x.AggregatorType == "aggr_crowdstrike_incident_mitre_v1");
+
+            // >= fromDate
+            if (fromDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate >= fromDate.Value);
+            }
+
+            // <= toDate
+            if (toDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate <= toDate.Value);
+            }
+
+            var arr = query
+                .GroupBy(x => x.CustomField4)
+                .Select(g => new MitrStat
+                {
+                    SeverityName = g.Key!,
+                    Quantity = g.Sum(x => x.EventCount ?? 0)
+                })
+                .OrderByDescending(x => x.Quantity)
+                .ToList();
+
+            return arr;
+        }
+
+        public IEnumerable<MitrStat> GetMitrTacticTechniqueStats(DateTime? fromDate, DateTime? toDate)
+        {
+            var query = context!.LogAggregates!
+                .Where(x =>
+                    x.OrgId == orgId &&
+                    x.CustomField8 != null &&
+                    x.CustomField8 != "" &&
+                    x.AggregatorType == "aggr_crowdstrike_incident_mitre_v1");
+
+            // >= fromDate
+            if (fromDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate >= fromDate.Value);
+            }
+
+            // <= toDate
+            if (toDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate <= toDate.Value);
+            }
+
+            var arr = query
+                .GroupBy(x => new { x.CustomField7, x.CustomField8, x.CustomField11 })
+                .Select(g => new MitrStat
+                {
+                    TacticId = g.Key.CustomField8!,
+                    TacticName = g.Key.CustomField7!,
+                    TechniqueId = g.Key.CustomField11!,
+                    Quantity = g.Sum(x => x.EventCount ?? 0),
+                    LastSeen = g.Max(x => x.EventDate)
+                })
+                .OrderBy(x => x.TacticId)
+                .ThenBy(x => x.TechniqueId)
+                .ToList();
+
+            return arr;
+        }
+
+        public long GetMitrEventCount(DateTime? fromDate, DateTime? toDate)
+        {
+            var query = context!.LogAggregates!
+                .Where(x =>
+                    x.OrgId == orgId &&
+                    x.CustomField8 != null &&
+                    x.CustomField8 != "" &&
+                    x.AggregatorType == "aggr_crowdstrike_incident_mitre_v1");
+
+            // >= fromDate
+            if (fromDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate >= fromDate.Value);
+            }
+
+            // <= toDate
+            if (toDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate <= toDate.Value);
+            }
+
+            var count = query
+                .Sum(x => x.EventCount ?? 0);
+
+            return count;
+        }
+
+        public long GetMitrTechniqueCount(DateTime? fromDate, DateTime? toDate)
+        {
+            var query = context!.LogAggregates!
+                .Where(x =>
+                    x.OrgId == orgId &&
+                    x.CustomField8 != null &&
+                    x.CustomField8 != "" &&
+                    x.AggregatorType == "aggr_crowdstrike_incident_mitre_v1");
+
+            // จากวันที่ (>= fromDate)
+            if (fromDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate >= fromDate.Value);
+            }
+
+            // ถึงวันที่ (<= toDate)
+            if (toDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate <= toDate.Value);
+            }
+
+            var count = query
+                .Select(x => x.CustomField11)
+                .Distinct()
+                .Count();
+
+            return count;
+        }
+
         public IEnumerable<Threat> GetThreatAlerts(int durationHour)
         {
             var cutoff = DateTime.UtcNow.AddHours(-durationHour);

@@ -8,8 +8,8 @@ namespace Its.Ads.Api.Models
         public string IncidentID { get; set; }
         public long Quantity { get; set; }
         public double Percentage { get; set; }
-        public string? MitrTechniqueName { get; set; }
-        public string? MitrTacticName { get; set; }
+        //public string? MitrTechniqueName { get; set; }
+        //public string? MitrTacticName { get; set; }
 
         public Threat()
         {
