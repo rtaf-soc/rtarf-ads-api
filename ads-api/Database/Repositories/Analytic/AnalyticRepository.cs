@@ -66,12 +66,12 @@ namespace Its.Ads.Api.Database.Repositories
             }
 
             var arr = query
-                .GroupBy(x => new { x.CustomField7, x.CustomField8, x.CustomField11 })
+                .GroupBy(x => new { x.CustomField7, x.CustomField8, x.CustomField12 })
                 .Select(g => new MitrStat
                 {
                     TacticId = g.Key.CustomField8!,
                     TacticName = g.Key.CustomField7!,
-                    TechniqueId = g.Key.CustomField11!,
+                    TechniqueId = g.Key.CustomField12!,
                     Quantity = g.Sum(x => x.EventCount ?? 0),
                     LastSeen = g.Max(x => x.EventDate)
                 })
