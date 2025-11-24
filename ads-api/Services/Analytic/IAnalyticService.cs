@@ -9,5 +9,6 @@ namespace Its.Ads.Api.Services
         public IEnumerable<Threat> GetThreatCategories(string orgId);
         public IEnumerable<Threat> GetThreatAlerts(string orgId);
         public IEnumerable<Threat> GetThreatSeverities(string orgId);
+        public MitrSummary GetMitrStats(string orgId, DateTime? fromDate, DateTime? toDate);
     }
 }

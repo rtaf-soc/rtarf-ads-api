@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Its.Ads.Api.Services;
+using Its.Ads.Api.ViewsModels;
 
 namespace Its.Ads.Api.Controllers
 {
@@ -60,6 +61,15 @@ namespace Its.Ads.Api.Controllers
         public IActionResult GetThreatSeverities(string id)
         {
             var result = svc.GetThreatSeverities(id);            
+            return Ok(result);
+        }
+
+        [ExcludeFromCodeCoverage]
+        [HttpPost]
+        [Route("org/{id}/action/GetMitreStats")]
+        public IActionResult GetMitreStats(string id, [FromBody] VMMitrStat request)
+        {
+            var result = svc.GetMitrStats(id, request.FromDate, request.ToDate);            
             return Ok(result);
         }
     }
