@@ -28,6 +28,7 @@ namespace Its.Ads.Api.Database.Repositories
                     ThreatName = g.CustomField4!,
                     ThreatDetail = g.CustomField5!,
                     Serverity = g.CustomField7,
+                    IncidentID = g.CustomField2!,
                 })
                 .OrderByDescending(x => Convert.ToInt32(x.Serverity))
                 .ToList();
