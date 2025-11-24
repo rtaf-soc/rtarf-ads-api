@@ -27,7 +27,7 @@ namespace Its.Ads.Api.Database.Repositories
                 {
                     ThreatName = g.CustomField4!,
                     ThreatDetail = g.CustomField5!,
-                    Serverity = g.CustomField7,
+                    Serverity = string.IsNullOrEmpty(g.CustomField7) ? "0" : g.CustomField7,
                     IncidentID = g.CustomField2!,
                 })
                 .OrderByDescending(x => Convert.ToInt32(x.Serverity))
