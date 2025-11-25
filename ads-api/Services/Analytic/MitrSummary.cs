@@ -5,6 +5,7 @@ namespace Its.Ads.Api.Models
         public long TotalEvent { get; set; }
         public long TotalTechnique { get; set; }
 
+        public List<MitrStat> TacticSummary { get; set; }
         public List<MitrStat> SeveritySummary { get; set; }
         public List<MitrStat> CalculatedSeveritySummary { get; set; }
         public List<MitrStat> TacticTechniqueSummary { get; set; }
@@ -14,6 +15,7 @@ namespace Its.Ads.Api.Models
             SeveritySummary = [];
             TacticTechniqueSummary = [];
             CalculatedSeveritySummary = [];
+            TacticSummary = [];
         }
     }
 }

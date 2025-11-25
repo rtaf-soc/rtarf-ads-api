@@ -109,6 +109,21 @@ namespace Its.Ads.Api.Services
             var summary = new MitrSummary();
             repository.SetCustomOrgId(orgId);
 
+            //TacticSummary
+            var tacticsStats = repository.GetMitreTacticStats(fromDate, toDate);
+            if (tacticsStats.Count() == 0)
+            {
+                summary.TacticSummary =
+                [
+                    new() { TacticId = "TA0043", TacticName = "Reconnaissance", Quantity = 700 },
+                ];
+            }
+            else
+            {
+                summary.TacticSummary = [.. tacticsStats];
+            }
+
+            //SeveritySummary
             var serverities = repository.GetMitrSeveritieStats(fromDate, toDate);
             if (serverities.Count() == 0)
             {
@@ -125,6 +140,7 @@ namespace Its.Ads.Api.Services
                 summary.SeveritySummary = [.. serverities];
             }
 
+            //CalculatedSeveritySummary
             var calculatedServerities = repository.GetMitrSeveritieCalculatedStats(fromDate, toDate);
             if (calculatedServerities.Count() == 0)
             {
@@ -141,6 +157,7 @@ namespace Its.Ads.Api.Services
                 summary.CalculatedSeveritySummary = [.. calculatedServerities];
             }
 
+            //GetMitrTacticTechniqueStats
             var tactics = repository.GetMitrTacticTechniqueStats(fromDate, toDate);
             if (tactics.Count() == 0)
             {
