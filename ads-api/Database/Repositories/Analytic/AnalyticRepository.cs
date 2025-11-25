@@ -10,6 +10,41 @@ namespace Its.Ads.Api.Database.Repositories
             context = ctx;
         }
 
+        public IEnumerable<MitrStat> GetMitreTacticStats(DateTime? fromDate, DateTime? toDate)
+        {
+           var query = context!.LogAggregates!
+                .Where(x =>
+                    x.OrgId == orgId &&
+                    x.CustomField8 != null &&
+                    x.CustomField8 != "" &&
+                    x.AggregatorType == "aggr_crowdstrike_incident_mitre_v1");
+
+            // >= fromDate
+            if (fromDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate >= fromDate.Value);
+            }
+
+            // <= toDate
+            if (toDate.HasValue)
+            {
+                query = query.Where(x => x.EventDate <= toDate.Value);
+            }
+
+            var arr = query
+                .GroupBy(x => new { x.CustomField7, x.CustomField8 })
+                .Select(g => new MitrStat
+                {
+                    TacticId = g.Key.CustomField8!,
+                    TacticName = g.Key.CustomField7!,
+                    Quantity = g.Sum(x => x.EventCount ?? 0)
+                })
+                .OrderByDescending(x => x.Quantity)
+                .ToList();
+
+            return arr;
+        }
+
         public IEnumerable<MitrStat> GetMitrSeveritieCalculatedStats(DateTime? fromDate, DateTime? toDate)
         {
             var query = context!.LogAggregates!
