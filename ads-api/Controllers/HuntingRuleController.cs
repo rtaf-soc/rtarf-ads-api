@@ -83,6 +83,21 @@ namespace Its.Ads.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [AllowAnonymous]  //ชั่วคราวเพื่อให้สามารถเข้าถึงได้จากภายนอกโดยไม่ต้องมีการยืนยันตัวตน
+        [Route("org/{id}/action/ShareHuntingRules/{ruleType}/{apiKey}")]
+        public IActionResult ShareHuntingRules(string id, string ruleType, string apiKey)
+        {
+            var param = new VMHuntingRule()
+            {
+                RefType = ruleType,
+                Limit = 100,
+            };
+
+            var result = svc.GetHuntingRules(id, param, true);
+            return Ok(result);
+        }
+
         [HttpPost]
         [Route("org/{id}/action/GetHuntingRuleCount")]
         public IActionResult GetHuntingRuleCount(string id, [FromBody] VMHuntingRule param)

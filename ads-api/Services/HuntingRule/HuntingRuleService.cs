@@ -92,11 +92,16 @@ namespace Its.Ads.Api.Services
             return r;
         }
 
-        public IEnumerable<MHuntingRule> GetHuntingRules(string orgId, VMHuntingRule param)
+        public IEnumerable<MHuntingRule> GetHuntingRules(string orgId, VMHuntingRule param, bool includeVeryBigField = false)
         {
             repository!.SetCustomOrgId(orgId);
             var result = repository!.GetHuntingRules(param);
 
+            if (includeVeryBigField)
+            {
+                return result;
+            }
+            
             foreach (var item in result)
             {
                 //We don't need to returen this field because it is very big
